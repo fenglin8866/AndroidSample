@@ -28,7 +28,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.busschedule.databinding.FullScheduleFragmentBinding
 import com.example.busschedule.viewmodels.BusScheduleViewModel
 import com.example.busschedule.viewmodels.BusScheduleViewModelFactory
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class FullScheduleFragment: Fragment() {
@@ -41,7 +40,7 @@ class FullScheduleFragment: Fragment() {
 
     private val viewModel: BusScheduleViewModel by activityViewModels {
         BusScheduleViewModelFactory(
-            (activity?.application as BusScheduleApplication).database.scheduleDao()
+            BusScheduleApp.databaseBusSchedule.scheduleDao()
         )
     }
 
@@ -49,7 +48,7 @@ class FullScheduleFragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FullScheduleFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
@@ -59,13 +58,13 @@ class FullScheduleFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        val busStopAdapter = BusStopAdapter({
+        val busStopAdapter = BusStopAdapter {
             val action = FullScheduleFragmentDirections
                 .actionFullScheduleFragmentToStopScheduleFragment(
-                stopName = it.stopName
-            )
+                    stopName = it.stopName
+                )
             view.findNavController().navigate(action)
-        })
+        }
         recyclerView.adapter = busStopAdapter
         lifecycle.coroutineScope.launch {
             viewModel.fullSchedule().collect() {

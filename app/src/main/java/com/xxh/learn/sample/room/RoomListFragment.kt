@@ -1,7 +1,9 @@
 package com.xxh.learn.sample.room
 
-import androidx.annotation.IdRes
-import androidx.navigation.fragment.findNavController
+import android.content.Intent
+import com.example.android.roomwordssample.WordsActivity
+import com.example.busschedule.BusScheduleActivity
+import com.example.inventory.InventoryActivity
 import com.xxh.basic.ListBaseFragment
 
 
@@ -13,17 +15,15 @@ class RoomListFragment : ListBaseFragment(){
     )
 
     override fun itemClickHandle(name: String) {
-        /*@IdRes
-        val resId: Int? = when (name) {
-            "Words" -> R.id.nav_graph_room_word
-            "BusSchedule" ->R.id.nav_graph_room_bus_schedule
-            "Inventory" -> R.id.nav_graph_room_inventory
+        val clazz: Class<*>? = when (name) {
+            "BusSchedule" -> BusScheduleActivity::class.java
+            "Inventory" -> InventoryActivity::class.java
+            "Words" -> WordsActivity::class.java
             else -> null
         }
-        resId?.let {
-            findNavController().navigate(it)
-        }*/
+        clazz?.let {
+            startActivity(Intent(this.requireContext(),clazz))
+        }
     }
-
 
 }

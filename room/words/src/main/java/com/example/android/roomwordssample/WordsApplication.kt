@@ -17,15 +17,25 @@
 package com.example.android.roomwordssample
 
 import android.app.Application
+import com.xxh.basic.IComponentApplication
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 
-class WordsApplication : Application() {
+class WordsApplication : IComponentApplication {
     // No need to cancel this scope as it'll be torn down with the process
-    val applicationScope = CoroutineScope(SupervisorJob())
 
-    // Using by lazy so the database and the repository are only created when they're needed
-    // rather than when the application starts
-    val database by lazy { WordRoomDatabase.getDatabase(this, applicationScope) }
-    val repository by lazy { WordRepository(database.wordDao()) }
+    override fun init(application: Application) {
+        WordsApp.init(application)
+    }
+}
+
+object WordsApp {
+    lateinit var repositoryWords: WordRepository
+    fun init(application: Application) {
+        val applicationScope = CoroutineScope(SupervisorJob())
+        // Using by lazy so the database and the repository are only created when they're needed
+        // rather than when the application starts
+        val databaseWords by lazy { WordRoomDatabase.getDatabase(application, applicationScope) }
+        repositoryWords = WordRepository(databaseWords.wordDao())
+    }
 }

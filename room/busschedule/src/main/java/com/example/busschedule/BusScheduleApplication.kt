@@ -17,7 +17,18 @@ package com.example.busschedule
 
 import android.app.Application
 import com.example.busschedule.database.AppDatabase
+import com.xxh.basic.IComponentApplication
 
-class BusScheduleApplication : Application() {
-    val database: AppDatabase by lazy { AppDatabase.getDatabase(this) }
+class BusScheduleApplication : IComponentApplication {
+
+    override fun init(application: Application) {
+        BusScheduleApp.init(application)
+    }
+}
+
+object BusScheduleApp {
+    lateinit var databaseBusSchedule: AppDatabase
+    fun init(application: Application) {
+        databaseBusSchedule = AppDatabase.getDatabase(application)
+    }
 }

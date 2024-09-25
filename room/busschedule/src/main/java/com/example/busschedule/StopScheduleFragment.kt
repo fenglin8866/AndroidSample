@@ -27,7 +27,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.busschedule.databinding.StopScheduleFragmentBinding
 import com.example.busschedule.viewmodels.BusScheduleViewModel
 import com.example.busschedule.viewmodels.BusScheduleViewModelFactory
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class StopScheduleFragment: Fragment() {
@@ -46,7 +45,7 @@ class StopScheduleFragment: Fragment() {
 
     private val viewModel: BusScheduleViewModel by activityViewModels {
         BusScheduleViewModelFactory(
-            (activity?.application as BusScheduleApplication).database.scheduleDao()
+            BusScheduleApp.databaseBusSchedule.scheduleDao()
         )
     }
 
