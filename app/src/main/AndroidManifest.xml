@@ -24,6 +24,8 @@
         </activity>
         <activity
             android:name=".room.RoomMainActivity" />
+        <activity
+            android:name=".di.DIMainActivity" />
     </application>
 
 </manifest>

@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.google.devtools.ksp)
     alias(libs.plugins.navigation.safeargs.kotlin)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -40,6 +40,8 @@ dependencies {
     implementation project(':room:words')
     implementation project(':room:busschedule')
     implementation project(':room:inventory')
+    implementation project(':di:logs')
+    implementation project(':di:login')
 
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat

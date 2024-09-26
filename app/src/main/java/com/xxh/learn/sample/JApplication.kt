@@ -9,7 +9,9 @@ class JApplication:Application() {
     private val MODULESLIST: Array<String> = arrayOf(
         "com.example.busschedule.BusScheduleApplication",
         "com.example.inventory.InventoryApplication",
-        "com.example.android.roomwordssample.WordsApplication"
+        "com.example.android.roomwordssample.WordsApplication",
+        "com.example.android.hilt.LogApplication",
+        "com.example.android.dagger.LoginApplication"
     )
 
     override fun onCreate() {
