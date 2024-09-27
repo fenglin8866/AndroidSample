@@ -14,20 +14,30 @@
  * limitations under the License.
  */
 
-package com.example.android.hilt.navigator
+package com.example.android.hilt.data
+
+import javax.inject.Inject
 
 /**
- * Available screens.
+ * Data manager class that handles data manipulation between the database and the UI.
  */
-enum class Screens {
-    BUTTONS,
-    LOGS
-}
+class LoggerInMemoryDataSource @Inject constructor():LoggerDataSource {
 
-/**
- * Interfaces that defines an app navigator.
- */
-interface AppNavigator {
-    // Navigate to a given screen.
-    fun navigateTo(screen: Screens)
+    private val logList=ArrayList<Log>()
+
+    override fun addLog(msg: String) {
+        logList.add(Log(
+            msg,
+            System.currentTimeMillis()
+        ))
+
+    }
+
+    override fun getAllLogs(callback: (List<Log>) -> Unit) {
+        callback(logList)
+    }
+
+    override fun removeLogs() {
+       logList.clear()
+    }
 }

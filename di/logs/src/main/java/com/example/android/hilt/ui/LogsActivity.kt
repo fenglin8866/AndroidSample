@@ -18,37 +18,40 @@ package com.example.android.hilt.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.android.hilt.LogApp
-import com.example.android.hilt.LogApplication
+import androidx.navigation.createGraph
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.fragment
 import com.example.android.hilt.R
-import com.example.android.hilt.navigator.AppNavigator
-import com.example.android.hilt.navigator.Screens
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * Main activity of the application.
  *
  * Container for the Buttons & Logs fragments. This activity simply tracks clicks on buttons.
  */
+@AndroidEntryPoint
 class LogsActivity : AppCompatActivity() {
-
-    private lateinit var navigator: AppNavigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_logs)
+        initNavigation()
+    }
 
-        navigator = LogApp.serviceLocator.provideNavigator(this)
-
-        if (savedInstanceState == null) {
-            navigator.navigateTo(Screens.BUTTONS)
+    private fun initNavigation() {
+        val navHost: NavHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val navController = navHost.navController
+        navController.graph = navController.createGraph(
+            startDestination = ScreensButtons
+        ) {
+            fragment<ButtonsFragment, ScreensButtons>()
+            fragment<LogsFragment, ScreensLogs>()
         }
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-
-        if (supportFragmentManager.backStackEntryCount == 0) {
-            finish()
-        }
-    }
 }
+@kotlinx.serialization.Serializable
+object ScreensButtons
+@kotlinx.serialization.Serializable
+object ScreensLogs
