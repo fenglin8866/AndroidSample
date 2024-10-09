@@ -2,6 +2,7 @@ package com.xxh.learn.sample
 
 import android.content.Intent
 import com.xxh.basic.ListBaseActivity
+import com.xxh.learn.sample.compose.ComposeMainActivity
 import com.xxh.learn.sample.di.DIMainActivity
 import com.xxh.learn.sample.lang.LangMainActivity
 import com.xxh.learn.sample.room.RoomMainActivity
@@ -17,6 +18,7 @@ class MainActivity : ListBaseActivity() {
         "Navigation",
         "SunFlower",
         "Todo",
+        "Compose",
         "Summary"
     )
 
@@ -24,6 +26,7 @@ class MainActivity : ListBaseActivity() {
         "Room" -> Intent(this, RoomMainActivity::class.java)
         "DI" -> Intent(this, DIMainActivity::class.java)
         "Lang" -> Intent(this, LangMainActivity::class.java)
+        "Compose" -> Intent(this, ComposeMainActivity::class.java)
         else -> null
     }
 }

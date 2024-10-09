@@ -1,7 +1,5 @@
 package com.xxh.learn.sample.lang
 
-import com.example.busschedule.BusScheduleActivity
-import com.example.inventory.InventoryActivity
 import com.xxh.basic.ListBaseFragment
 import com.xxh.learn.java.JavaTestMain
 import com.xxh.learn.kotlin.KotlinTestMain

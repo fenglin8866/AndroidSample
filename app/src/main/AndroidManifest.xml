@@ -29,6 +29,8 @@
 
         <activity
             android:name=".lang.LangMainActivity" />
+        <activity
+            android:name=".compose.ComposeMainActivity" />
     </application>
 
 </manifest>
