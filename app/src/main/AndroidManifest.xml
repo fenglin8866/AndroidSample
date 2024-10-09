@@ -26,6 +26,9 @@
             android:name=".room.RoomMainActivity" />
         <activity
             android:name=".di.DIMainActivity" />
+
+        <activity
+            android:name=".lang.LangMainActivity" />
     </application>
 
 </manifest>

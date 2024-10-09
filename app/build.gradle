@@ -44,6 +44,8 @@ dependencies {
     implementation project(':room:inventory')
     implementation project(':di:logs')
     implementation project(':di:login')
+    implementation project(':lang:kotlin')
+    implementation project(':lang:java')
 
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat
