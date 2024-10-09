@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    compileSdk 35
+    compileSdk 34
     namespace "androidx.compose.material3.catalog.library"
 
     defaultConfig {

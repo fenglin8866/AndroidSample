@@ -1,0 +1,75 @@
+一.SharedPreference的构建
+1.Activity.getPreferences(Mode)
+名称： activity类名。
+其他activity读取时使用getDefaultSharedPreferences。
+
+2.Context.getSharedPreferences(name,mode)
+名称： 设置名称
+
+3.通过PreferencesManager来获取
+sp = PreferenceManager.getDefaultSharedPreferences(context);
+名称： 应用包名+"_preferences"
+
+位置：/data/data/<packagename>/shared_prefs/目录下
+========================================================
+1.MODE_PRIVATE 如果文件存在，会对文件进行覆盖，否则创建新文件
+2.MODE_APPEND  如果文件存在，会往文件中追加记录，否则创建新文件
+
+二.apply和commit两种提交方式的区别
+大概区别如下：
+（1）apply是无返回值的，而commit是有返回值，所以使用apply提交之后，无法判定是否提交成功，而commit方式可以返回是否提交成功的布尔值，所以在需要得到返回值的情况下建议使用commit方式
+（2）apply操作是一个原子性的操作，是先把数据提交到内存中，然后再通过异步任务提交到硬件磁盘上。而commit是个同步操作，直接把数据提交到硬件磁盘上。因此，在多个并发的提交commit的时候，
+    他们会等待正在处理的commit保存到磁盘后在操作，从而降低了效率。而apply只是原子的提交到内容，后面有调用apply的函数的将会直接覆盖前面的内存数据，这样从一定程度上提高了很多效率。
+
+结论：在开发中如果我们需要返回值的情况（一般不需要），那就选用commit方式。其他情况，建议选用效率比较高的apply方式。
+
+三.多进程，多线程的处理
+
+四.是否需要使用多个SP文件？为什么?
+=====================
+封装
+思路
+1.创建不同的SharedPreference文件
+2.封装读写操作
+3.业务功能与公用功能分离
+4.缓存管理类
+
+
+使用场景
+1.直接存储json，获取时直接转为缓存集合。
+2.设置版本号,不通过服务端，通过本地修改存储数据。
+
+========================================================
+SharedPreference中Edit本质是链式调用，最后一次提交，减少反复提交。
+
+
+=================================================
+思维扩散
+1.单例一直占用内存，是否考虑用完销毁
+2.View用完销毁，数据层是一直缓存还是用完销毁好？
+3.框架的思考，例如Dagger，Hilt,lifecycle等生成代码背后的思维
+4.接口思想：功能与逻辑分开
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

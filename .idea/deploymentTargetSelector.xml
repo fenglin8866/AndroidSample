@@ -5,7 +5,10 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="summary">
+      <SelectionState runConfigName="xsummary">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="xdev">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

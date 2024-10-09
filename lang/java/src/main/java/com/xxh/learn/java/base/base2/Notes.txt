@@ -1,0 +1,128 @@
+一、枚举
+1.概念：
+  枚举是一个被命名的整型常量的集合，用于声明一组带标识符的常量。
+
+  针对是固定数量常量；
+  代替接口定义常量，
+    功能更加的强大，枚举父类中存在一些常用的属性方法
+    更加的简洁，直接定义实例变量，不用添加其他修饰符
+    增加可读性，名称定义
+
+2.定义
+  限制符 enum 名称{ }
+  a.不能继承其他类，可以实现接口，因为创建枚举会隐式继承Enum类，单继承导致不能继承其他类
+  b.直接引用实例，内部实际为public static final修饰
+  c.实例必须放在第一行，逗号隔开，最后为；(实例后没代码可以省略)。
+
+3.enum常用属性方法
+values()，返回枚举所有对象，如果没有复写toString,打印其名称
+name()
+ordinal() 默认0开始
+valueOf(String)
+compareTo(E)  返回ordinal之差
+
+
+4.使用场景
+a、组织常量
+b、单例
+c、错误码，状态机。
+switch结构，定义一个含有变量的枚举，可以通过获取其他定义
+d、组织枚举（相近枚举可以组织在一个类或接口中）
+
+5.其他
+a.本质是final修饰的java.lang.Enum的子类，里面只包含一组有限的特定的对象里面只包含一组有限的特定的对象，其他一些特征跟定义的类相同
+final class xxx.Season extends java.lang.Enum<xxx.Season>{
+   public static final xxx.Season SPRING;
+   .......
+}
+
+b.EnumMap 与 EnumSet
+
+参考：
+http://c.biancheng.net/view/1100.html
+https://blog.csdn.net/weixin_52385232/article/details/125430591
+https://www.cnblogs.com/javastack/p/12837890.html
+=========================================================
+
+二、泛型
+1.概念
+  解决问题：
+
+2.定义
+a、泛型接口
+   泛型类
+   泛型方法
+     泛型方法，使方法独立于类而产生变化。跟类是不是泛型没有关系，
+
+b、常用命名  T,K,V,E,U,
+c、通配符
+   <>
+
+d、继承性
+   泛型继承：需要在继承时指定，不然都在父类泛型为Object。
+
+3.使用场景
+  a.集合
+  b.提高代码通用性
+
+4.实现原理
+
+5.其他
+对一个 static 的方法而言，无法访问泛型类的类型参数，只能使用泛型方法。因为类型参数在实例或使用的时候才确定具体的类型。
+
+参考：
+https://blog.csdn.net/sunxianghuang/article/details/51982979
+https://blog.csdn.net/zjjcchina/article/details/121417950
+https://pdai.tech/md/java/basic/java-basic-x-generic.html
+
+https://blog.csdn.net/ChenRui_yz/article/details/122935621
+http://c.biancheng.net/view/1085.html
+https://www.51cto.com/article/669283.html
+=========================================================
+
+概念：PECS 生产者使用extends，消费者使用super。
+生产者：产生对象 体现：返回对象，一般不会添加对象
+消费者：消耗对象 体现：添加对象，一般不会返回对象
+
+一、<? extends T> T为上界，类型为T或T的子类
+为生产者，不能为消费者
+原因：返回T，为上界，即为顶层父类，根据多态，里氏代换，不影响使用。
+不能为消费者，即不能添加对象,子类可以多种类型，没有下界，无法确定一个固定类型，导致无法添加对象
+实例：
+// Number "extends" Number (in this context)
+List<? extends Number> foo3 = new ArrayList<Number>();
+// Integer extends Number
+List<? extends Number> foo3 = new ArrayList<Integer>();
+// Double extends Number
+List<? extends Number> foo3 = new ArrayList<Double>();
+不能往List<? extends T>中插入任何类型的对象，因为你不能保证列表实际指向的类型是什么，你并不能保证列表中实际存储什么类型的对象。
+唯一可以保证的是，你可以从中读取到T或者T的子类
+===================================
+
+
+
+二、<? supper T>  T为下界，类型为T或T的父类
+为消费者，不能生产者
+原因：T为下界，可以添加T或T的子类，没有上界，父类无法确定，不能添加T的父类
+不能为生产者，即不能输出对象，上界无法确定，T不能转换为父类
+实例：
+// Integer is a "superclass" of Integer (in this context)
+List<? super Integer> foo3 = new ArrayList<Integer>();
+// Number is a superclass of Integer
+List<? super Integer> foo3 = new ArrayList<Number>();
+// Object is a superclass of Integer
+List<? super Integer> foo3 = new ArrayList<Object>();
+
+
+
+三、即是生产者，也是消费者
+  如果一个列表即要生产，又要消费，你不能使用泛型通配符声明列表，声明确定的类型。比如List<Integer>
+
+四、实例，java.util.Collections里的copy方法
+
+五、泛型的集合的生产者get(), 消费者是add()。
+
+参考：
+https://javajgs.com/archives/169350
+https://blog.csdn.net/Victor_Cindy1/article/details/50458813
+

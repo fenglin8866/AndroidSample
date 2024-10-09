@@ -1,5 +1,7 @@
 [versions]
 agp = "8.5.2"
+androidxComposeBomVersion = "2024.04.01"
+kotlinReflect = "1.9.24"
 ksp = "2.0.20-1.0.24"
 kotlin = "2.0.20"
 coreKtx = "1.13.1"
@@ -21,7 +23,9 @@ kotlinSerialization = "1.6.3"
 jetbrainsKotlinJvm = "2.0.20"
 
 [libraries]
+androidx-compose-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "androidxComposeBomVersion" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlinReflect" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activity" }

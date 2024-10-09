@@ -1,0 +1,101 @@
+1.Component：把依赖注入目标类
+a、设置module类，传递给对应的Factory类
+b、先new，再调用module方法，再使用Factory静态注入
+c、Factory中Provider传值是 所有module中Provider标注的方法 ，再使用@Inject标注的构造方法对象
+
+
+2.Module：管理依赖的对象
+a、真正产生依赖对象，Factory只是获取对象。每个Provider标注生成一个Factory类。
+b、可以定义属性和没有Provider标注的方法，用于构造对象，Module是直接透传，属性设置不影响流程。
+c、方法有参数，该方法生产的Factory类内部提供一个Provider属性，Component会变量查找注入。
+
+
+3.工厂类
+如果内部使用其他的依赖，为了隔离，统一使用Provider获取，而不是内部创建或调用，调用统一到Component中
+产生对象:
+a.通过new生产
+b.通过Module中调用
+注意点：
+一、依赖对象内有其他依赖
+ a、构造方法有依赖
+      工厂内部提供一个Provider属性，依赖类生成一个Factory类，Component调用Factory产生对象注入
+ b、属性有依赖
+      工厂内部提供一个Provider属性，属性生成一个Injector类和Factory类，Component调用Factory产生对象注入
+========================================
+ c.依赖对象构造方法标注@Inject
+    生成工厂类
+ d.使用module构建
+    生成工厂类，必须标注到对应的Component中
+
+二、设计思想：解耦，隔离，递归。
+
+
+4.Injector
+注解器:给目标类注入依赖对象，通过Provider获取依赖，Provider解耦的的作用，不关心对象是怎么生产的，直接获取就行。
+一个目标类对应一个Injector器
+
+
+======================================================
+设计模式：单例，建造者，工厂
+
+=====================================================
+Dagger：
+  1、自动生成代码，减少项目模板调度
+  2、解耦，便于测试，维护，重用
+
+==============================
+1、注解方法，在执行的时候直接调用
+方法注入和属性注入基本上没有区别， 那么什么时候应该使用方法注入呢？
+比如该依赖需要this对象的时候，使用方法注入可以提供安全的this对象，因为方法注入是在构造器之后执行的。
+@Inject
+    void setupListeners() {
+        mTasksView.setPresenter(this);
+    }
+
+
+2、其他注解
+@Qualifier
+@Named 是Qualifier的实现
+使用：标注目标类中的依赖，提供依赖对象的方法
+作用：标注同类型不同的注入对象
+==============
+@Scope
+@Singleton 是Scope的实现
+使用：标注Component对象和提供依赖对象的方法
+作用：从Component中获取的依赖对象是单例的。原理Component在注入依赖的时候，通过委托模式构建一个依赖的单例对象。
+
+3、component组织
+依赖
+
+继承
+
+
+4、Module
+a、我们使用依赖倒置的时候，因为需要注入的对象是抽象的，@Inject也无法使用，因为抽象的类并不能实例化
+b、注入的对象是第三方库提供的，我们无法在第三方库的构造器上加上@Inject注解
+c、有参构造方法
+===========
+Bind/BindInstance/MultiBinds
+
+类似桥梁，提供类型的声明，将父类的需求，嫁接到其子类实现，避免子类暴露，使调用代码依赖抽象类型，而不是具体的子类
+
+
+BindInstance
+相当于一个管道，需求在Component内提前为某一个类型对象打一个桩，在构建的时候使用其类或其子类对象代替桩，以便其他地方获取，
+构建的时候必须赋值，不然会异常
+
+
+==========================================================
+Component组织
+方式
+1.继承SubComponent
+  Component:内部定义对应的SubComponent类型
+  SubComponent：内部机构类似Component,不会生产DaggerxxxComponent类，必须依附Component创建。
+  构建对象：通过Component获取SubComponent，然后注入。
+
+2.依赖dependencies
+ 依赖的Component,内部提供对外暴露的类型，供给目标Component获取。
+ 目标Component,添加dependencies类。
+ 构建对象：需要设置依赖Component对象。
+
+ 可以使用引入对应module代替，当项目比较大，类型比较多，建议使用dependencies，解耦，高内聚低耦合，更容易复用，维护

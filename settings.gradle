@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "JetpackSample"
+rootProject.name = "AndroidSample"
 include ':app'
 include ':room:words'
 include ':core:basic'
@@ -27,7 +27,8 @@ include ':room:busschedule'
 include ':room:inventory'
 include ':di:logs'
 include ':di:login'
+include ':compose:m3'
 include ':lang:kotlin'
 include ':lang:java'
-include ':summary'
-include ':compose:m3'
+include ':xsummary'
+include ':xdev'
