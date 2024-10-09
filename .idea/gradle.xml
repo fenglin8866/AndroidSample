@@ -22,6 +22,7 @@
             <option value="$PROJECT_DIR$/room/busschedule" />
             <option value="$PROJECT_DIR$/room/inventory" />
             <option value="$PROJECT_DIR$/room/words" />
+            <option value="$PROJECT_DIR$/summary" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

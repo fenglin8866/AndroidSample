@@ -17,7 +17,7 @@ class MainActivity : ListBaseActivity() {
         "Navigation",
         "SunFlower",
         "Todo",
-
+        "Summary"
     )
 
     override fun setClickIntent(name: String): Intent? = when (name) {
