@@ -12,7 +12,7 @@ abstract class ListBaseActivity : BaseActivity<ContentListBinding>() {
         return ContentListBinding.inflate(layoutInflater)
     }
 
-    override fun initView() {
+    override fun setupViews() {
         val dataset = setData()
         val customAdapter = StringAdapter(dataset)
         customAdapter.setItemClickCallback {

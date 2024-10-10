@@ -1,0 +1,40 @@
+lifecycle源码分析
+版本：
+def lifecycle_version = "2.6.0"
+def arch_version = "2.2.0"
+==============================
+疑问点
+一、Lifecycle
+1.Lifecycle类中为什么要定义state？，而不是只用Event
+
+2.LifecycleRegistry中
+observerMap为什么要定义不变性？
+parentStates的作用？
+执行state = min(state, newState)的作用
+针对一些特殊情况，怎么保障所有观察者的同步
+
+========================
+二、ViewModel
+Activity和Fragment中构建ViewModel使用委托方法viewModels()
+例如：val viewModel: UserModel by viewModels()
+================
+val viewModel: UserModel by viewModels()
+val userModel by lazy {
+   ViewModelProvider(this).get(UserModel::class.java)
+}
+lateinit var userModel:UserModel
+
+
+三、LiveData
+
+
+四、SavedState
+
+==========================
+1.原理
+2.代码细节
+3.ktx的扩展
+4.使用
+  a、androidx中的使用
+  b、开发使用
+5.模仿，编程思想

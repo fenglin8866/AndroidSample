@@ -42,6 +42,7 @@ dependencies {
 
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat
+    implementation libs.androidx.activity.ktx
     implementation libs.material
     implementation libs.androidx.activity
     implementation libs.androidx.constraintlayout
@@ -68,4 +69,9 @@ dependencies {
     implementation libs.androidx.lifecycle.lifecycle.service
     // optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
     implementation libs.androidx.lifecycle.lifecycle.process
+
+    // Java language implementation
+    implementation libs.androidx.fragment
+    // Kotlin
+    implementation libs.androidx.fragment.ktx
 }

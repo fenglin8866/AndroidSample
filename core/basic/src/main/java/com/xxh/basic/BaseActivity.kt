@@ -17,12 +17,12 @@ abstract class BaseActivity<T : ViewBinding> : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding=bindView(layoutInflater)
         setContentView(mBinding.root)
-        initView()
+        setupViews()
     }
 
     abstract fun bindView(inflater: LayoutInflater): T
 
-    open fun initView(){
+    open fun setupViews(){
 
     }
 }

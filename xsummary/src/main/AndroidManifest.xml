@@ -59,6 +59,10 @@
         <activity
             android:name=".viewpage.ViewPagerActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.LayoutActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

@@ -24,6 +24,15 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
         return mBinding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupViews()
+    }
+
+    open fun setupViews(){
+
+    }
+
     abstract fun bindView(inflater: LayoutInflater, container: ViewGroup?): T
 
     /**
