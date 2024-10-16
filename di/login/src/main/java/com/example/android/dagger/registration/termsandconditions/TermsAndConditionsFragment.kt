@@ -25,10 +25,14 @@ import androidx.fragment.app.Fragment
 import com.example.android.dagger.R
 import com.example.android.dagger.registration.RegistrationActivity
 import com.example.android.dagger.registration.RegistrationViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class TermsAndConditionsFragment : Fragment() {
 
-    private lateinit var registrationViewModel: RegistrationViewModel
+    @Inject
+    lateinit var registrationViewModel: RegistrationViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,7 +41,7 @@ class TermsAndConditionsFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_terms_and_conditions, container, false)
 
-        registrationViewModel = (activity as RegistrationActivity).registrationViewModel
+      //  registrationViewModel = (activity as RegistrationActivity).registrationViewModel
 
         view.findViewById<Button>(R.id.next).setOnClickListener {
             registrationViewModel.acceptTCs()
