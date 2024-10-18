@@ -10,6 +10,6 @@ java {
 
 dependencies {
     // Kotlin components
-    implementation libs.org.jetbrains.kotlinx.kotlinx.coroutines.core
+    implementation libs.kotlinx.coroutines.core
     implementation libs.kotlin.reflect
 }
