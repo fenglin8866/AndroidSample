@@ -22,17 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".room.RoomMainActivity" />
-        <activity
-            android:name=".sample.SampleMainActivity" />
-        <activity
-            android:name=".di.DIMainActivity" />
-
-        <activity
-            android:name=".lang.LangMainActivity" />
-        <activity
-            android:name=".compose.ComposeMainActivity" />
     </application>
 
 </manifest>

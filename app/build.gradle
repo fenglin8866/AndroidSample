@@ -6,6 +6,9 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.kotlin.serialization)
+    //Parcelize自动序列化插件
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -190,7 +193,8 @@ dependencies {
 
     //常用组件
     implementation libs.timber
-
+    //kotlin序列号库,需要添加插件kotlin-serialization，jetbrains-kotlin-jvm
+    implementation libs.kotlinSerializationCore
 
 
     implementation platform(libs.androidx.compose.bom)
