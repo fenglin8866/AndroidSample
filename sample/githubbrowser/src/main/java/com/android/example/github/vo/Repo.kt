@@ -20,6 +20,7 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.Index
 import com.google.gson.annotations.SerializedName
+import javax.annotation.Nonnull
 
 /**
  * Using name/owner_login as primary key instead of id since name/owner_login is always available
@@ -33,6 +34,7 @@ import com.google.gson.annotations.SerializedName
 )
 data class Repo(
     val id: Int,
+    @Nonnull
     @field:SerializedName("name")
     val name: String,
     @field:SerializedName("full_name")
@@ -47,6 +49,7 @@ data class Repo(
 ) {
 
     data class Owner(
+        @Nonnull
         @field:SerializedName("login")
         val login: String,
         @field:SerializedName("url")

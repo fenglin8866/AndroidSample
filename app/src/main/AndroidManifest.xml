@@ -25,6 +25,8 @@
         <activity
             android:name=".room.RoomMainActivity" />
         <activity
+            android:name=".sample.SampleMainActivity" />
+        <activity
             android:name=".di.DIMainActivity" />
 
         <activity

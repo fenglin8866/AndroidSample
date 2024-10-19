@@ -24,7 +24,6 @@ import com.android.example.github.api.GithubService
 import com.android.example.github.api.RepoSearchResponse
 import com.android.example.github.db.GithubDb
 import com.android.example.github.db.RepoDao
-import com.android.example.github.testing.OpenForTesting
 import com.android.example.github.util.AbsentLiveData
 import com.android.example.github.util.RateLimiter
 import com.android.example.github.vo.Contributor
@@ -43,7 +42,6 @@ import javax.inject.Singleton
  * Repository - type of this class.
  */
 @Singleton
-@OpenForTesting
 class RepoRepository @Inject constructor(
     private val appExecutors: AppExecutors,
     private val db: GithubDb,

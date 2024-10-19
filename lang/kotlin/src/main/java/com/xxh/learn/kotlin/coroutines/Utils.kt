@@ -1,6 +1,6 @@
 package com.xxh.learn.kotlin.coroutines
 
-fun log(tag: String = "xxh", msg: String) {
+fun log(msg: String, tag: String = "xxh") {
     println("[$tag][${Thread.currentThread().name}]:$msg")
 }
 

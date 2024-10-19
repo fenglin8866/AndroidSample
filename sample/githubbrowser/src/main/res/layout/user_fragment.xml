@@ -29,7 +29,7 @@
         <import type="android.graphics.drawable.Drawable"/>
         <variable
             name="args"
-            type="com.android.example.github.ui.user.UserFragmentArgs" />
+            type="com.android.example.github.ui.user.UserArgs" />
 
         <variable
             name="userResource"

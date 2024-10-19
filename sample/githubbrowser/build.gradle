@@ -5,7 +5,6 @@ plugins {
     alias(libs.plugins.kapt)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
-    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -32,30 +31,110 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+
+
 }
 
 dependencies {
 
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat
-    implementation libs.material
-    testImplementation libs.junit
-    androidTestImplementation libs.androidx.junit
-    androidTestImplementation libs.androidx.espresso.core
-
-
-    //Navigation组件
-    // Kotlin
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
-    // Testing Navigation
-    androidTestImplementation(libs.androidx.navigation.navigation.testing)
-    // Jetpack Compose Integration
-    implementation(libs.androidx.navigation.navigation.compose)
+    implementation libs.androidx.appcompat.resources
+    implementation libs.androidx.activity
+    implementation libs.androidx.activity.ktx
+    implementation libs.androidx.fragment
+    implementation libs.androidx.fragment.ktx
+    implementation libs.androidx.annotation
+    implementation libs.androidx.annotation.experimental
+    implementation libs.androidx.datastore.preferences
+    implementation libs.androidx.graphics.shapes
 
     // Kotlin components
     implementation libs.kotlinx.coroutines.core
     implementation libs.kotlinx.coroutines.android
+
+
+    implementation libs.androidx.cardview
+    //实现 Material Design 抽屉式导航栏 widget
+    implementation libs.drawerlayout
+    implementation libs.material
+    implementation libs.androidx.constraintlayout
+    implementation libs.androidx.swiperefreshlayout
+    implementation libs.androidx.viewpager2
+    // To use the Animator APIs
+    implementation libs.androidx.core.animation
+    // Java language implementation
+    implementation libs.androidx.transition
+    // Kotlin
+    implementation libs.androidx.transition.ktx
+
+    //让库能够提前预填充要由 ART 读取的编译轨迹。
+    implementation libs.androidx.profileinstaller
+    //将跟踪事件写入系统跟踪缓冲区。
+    implementation libs.androidx.tracing.ktx
+
+
+    //WorkManager组件
+    // (Java only)
+    implementation libs.androidx.work.runtime
+    // Kotlin + coroutines
+    implementation libs.androidx.work.runtime.ktx
+    // optional - GCMNetworkManager support
+    implementation libs.androidx.work.gcm
+    // optional - Multiprocess support
+    implementation libs.androidx.work.multiprocess
+    // optional - Test helpers
+    androidTestImplementation libs.androidx.work.testing
+
+
+    //paging组件
+    implementation libs.androidx.paging.runtime
+    implementation libs.androidx.paging.runtime.ktx
+    // alternatively - without Android dependencies for tests
+    testImplementation libs.androidx.paging.common
+
+
+    // Lifecycle components
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation libs.androidx.lifecycle.runtime.ktx
+    // ViewModel
+    implementation libs.androidx.lifecycle.viewmodel.ktx
+    // LiveData
+    implementation libs.androidx.lifecycle.livedata.ktx
+    // Saved state module for ViewModel
+    implementation libs.androidx.lifecycle.viewmodel.savedstate
+    // alternately - if using Java8, use the following instead of lifecycle-compiler
+    implementation libs.androidx.lifecycle.common.java8
+    // optional - helpers for implementing LifecycleOwner in a Service
+    implementation libs.androidx.lifecycle.service
+    // optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
+    implementation libs.androidx.lifecycle.process
+    // optional - ReactiveStreams support for LiveData
+    implementation libs.androidx.lifecycle.reactivestreams.ktx
+    // optional - Test helpers for Lifecycle runtime
+    testImplementation libs.androidx.lifecycle.runtime.testing
+    // optional - Test helpers for LiveData
+    implementation libs.androidx.arch.core.common
+    implementation libs.androidx.arch.core.runtime
+    implementation libs.androidx.arch.core.testing
+    // Java language implementation
+    implementation libs.savedstate
+    // Kotlin
+    implementation libs.savedstate.ktx
+
+
+    //Navigation组件
+    // Kotlin
+    implementation libs.androidx.navigation.fragment.ktx
+    implementation libs.androidx.navigation.ui.ktx
+    // Testing Navigation
+    androidTestImplementation(libs.androidx.navigation.navigation.testing)
+
 
     // Room components
     implementation libs.androidx.room.runtime
@@ -64,10 +143,13 @@ dependencies {
     // To use Kotlin Symbol Processing (KSP)
     ksp libs.androidx.room.compiler
 
+
     // Hilt
-    implementation(libs.hilt.android.core)
-    implementation(libs.androidx.hilt.navigation.compose)
-    kapt(libs.hilt.compiler)
+    implementation libs.hilt.android.core
+    kapt libs.hilt.compiler
+    implementation libs.dagger
+    annotationProcessor libs.dagger.compiler
+
 
     //网络
     implementation libs.okhttp
@@ -79,4 +161,13 @@ dependencies {
     implementation libs.gson
     implementation libs.glide
     ksp libs.glide.compiler
+
+
+    //常用组件
+    implementation libs.timber
+
+
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
 }

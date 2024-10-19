@@ -19,10 +19,12 @@ package com.android.example.github.vo
 import androidx.room.Entity
 import androidx.room.TypeConverters
 import com.android.example.github.db.GithubTypeConverters
+import javax.annotation.Nonnull
 
 @Entity(primaryKeys = ["query"])
 @TypeConverters(GithubTypeConverters::class)
 data class RepoSearchResult(
+    @Nonnull
     val query: String,
     val repoIds: List<Int>,
     val totalCount: Int,

@@ -20,7 +20,6 @@ import androidx.lifecycle.LiveData
 import com.android.example.github.AppExecutors
 import com.android.example.github.api.GithubService
 import com.android.example.github.db.UserDao
-import com.android.example.github.testing.OpenForTesting
 import com.android.example.github.vo.Resource
 import com.android.example.github.vo.User
 import javax.inject.Inject
@@ -29,7 +28,6 @@ import javax.inject.Singleton
 /**
  * Repository that handles User objects.
  */
-@OpenForTesting
 @Singleton
 class UserRepository @Inject constructor(
     private val appExecutors: AppExecutors,
