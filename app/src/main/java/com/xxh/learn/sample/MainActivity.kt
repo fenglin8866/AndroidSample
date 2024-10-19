@@ -15,14 +15,10 @@ class MainActivity : ListBaseActivity() {
         "Lang",
         "Room",
         "DI",
-        "Sample",
         "Lifecycle",
         "Navigation",
-        "SunFlower",
-        "Todo",
         "Compose",
-        "Summary",
-
+        "Sample",
     )
 
     override fun setClickIntent(name: String): Intent? = when (name) {

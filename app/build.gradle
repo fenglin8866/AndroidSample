@@ -40,6 +40,7 @@ android {
         compose true
         viewBinding true
         dataBinding true
+        buildConfig true
     }
 }
 
@@ -55,6 +56,8 @@ dependencies {
     implementation project(':lang:java')
     implementation project(':compose:m3')
     implementation project(':sample:githubbrowser')
+    implementation project(':sample:sunflower')
+    implementation project(':sample:todo')
 
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat
