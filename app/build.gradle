@@ -13,16 +13,17 @@ plugins {
 
 android {
     namespace 'com.xxh.learn.sample'
-    compileSdk 34
+    compileSdk rootProject.compileSdkVersion
 
     defaultConfig {
         applicationId "com.xxh.learn.sample"
-        minSdk 24
-        targetSdk 34
+        minSdk rootProject.minSdkVersion
+        targetSdk rootProject.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+       // buildConfigField("String", "UNSPLASH_ACCESS_KEY", "\"" + getUnsplashAccess() + "\"")
     }
 
     buildTypes {
@@ -37,6 +38,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        // Enable Coroutines and Flow APIs
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
     }
 
     buildFeatures {

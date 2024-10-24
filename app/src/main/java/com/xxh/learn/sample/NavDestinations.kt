@@ -15,4 +15,6 @@ class NavDestinations {
     object Room
     @Serializable
     object Sample
+    @Serializable
+    object Navigation
 }

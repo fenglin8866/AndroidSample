@@ -11,3 +11,11 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.jvm) apply false
     alias(libs.plugins.compose.compiler) apply false
 }
+
+// Define versions in a single place
+ext {
+    // Sdk and tools
+    compileSdkVersion = 34
+    minSdkVersion = 24
+    targetSdkVersion = 34
+}

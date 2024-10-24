@@ -22,8 +22,9 @@ class MainListFragment : ListBaseFragment() {
             "Room" -> NavDestinations.Room
             "DI" -> NavDestinations.DI
             "Lang" -> NavDestinations.Lang
-            "Compose" -> NavDestinations.Compose
+            "Navigation" -> NavDestinations.Navigation
             "Sample" -> NavDestinations.Sample
+            "Compose" -> NavDestinations.Compose
             else -> null
         }
         navDestination?.let {

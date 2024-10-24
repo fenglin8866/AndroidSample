@@ -20,6 +20,8 @@
             <option value="$PROJECT_DIR$/lang" />
             <option value="$PROJECT_DIR$/lang/java" />
             <option value="$PROJECT_DIR$/lang/kotlin" />
+            <option value="$PROJECT_DIR$/navigation" />
+            <option value="$PROJECT_DIR$/navigation/sample" />
             <option value="$PROJECT_DIR$/room" />
             <option value="$PROJECT_DIR$/room/busschedule" />
             <option value="$PROJECT_DIR$/room/inventory" />
