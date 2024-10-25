@@ -1,0 +1,6 @@
+1、启动服务startService
+多次调用start，onCreate只执行一次，onStart会执行多次
+
+2、停止服务stopService，selfService
+如果没有启动服务，先stop，再start不会引发报错
+如果有服务，先stop，会停止服务，再start会重新启动服务。
