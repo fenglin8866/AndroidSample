@@ -11,7 +11,6 @@ class JApplication:Application() {
         "com.example.busschedule.BusScheduleApplication",
         "com.example.inventory.InventoryApplication",
         "com.example.android.roomwordssample.WordsApplication",
-        "com.example.android.dagger.LoginApplication",
         "com.example.android.architecture.blueprints.todoapp.TodoApplication"
     )
 

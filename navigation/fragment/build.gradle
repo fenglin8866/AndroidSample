@@ -1,29 +1,22 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.navigation.safeargs.kotlin)
     alias(libs.plugins.kapt)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
-    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.serialization)
-    //Parcelize自动序列化插件
-    id 'kotlin-parcelize'
 }
 
 android {
-    namespace 'com.xxh.learn.sample'
-    compileSdk rootProject.compileSdkVersion
+    namespace 'com.xxh.learn.fragment'
+    compileSdk 34
 
     defaultConfig {
-        applicationId "com.xxh.learn.sample"
-        minSdk rootProject.minSdkVersion
-        targetSdk rootProject.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        minSdk 24
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-       // buildConfigField("String", "UNSPLASH_ACCESS_KEY", "\"" + getUnsplashAccess() + "\"")
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -38,34 +31,14 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
-        // Enable Coroutines and Flow APIs
-        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
-        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
     }
-
     buildFeatures {
-        compose true
         viewBinding true
-        dataBinding true
-        buildConfig true
     }
 }
 
 dependencies {
-
     implementation project(':core:basic')
-    implementation project(':room:words')
-    implementation project(':room:busschedule')
-    implementation project(':room:inventory')
-    implementation project(':di:logs')
-    implementation project(':di:login')
-    implementation project(':lang:kotlin')
-    implementation project(':lang:java')
-    implementation project(':compose:m3')
-    implementation project(':sample:githubbrowser')
-    implementation project(':sample:sunflower')
-    implementation project(':sample:todo')
-    implementation project(':navigation:fragment')
 
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat
@@ -79,8 +52,9 @@ dependencies {
     implementation libs.androidx.annotation.experimental
     implementation libs.androidx.datastore.preferences
     implementation libs.androidx.graphics.shapes
-    // Kotlin
-    implementation libs.androidx.preference.ktx
+    implementation libs.androidx.legacy.support.v4
+    implementation libs.androidx.recyclerview
+    implementation libs.androidx.preference
 
     // Kotlin components
     implementation libs.kotlinx.coroutines.core
@@ -105,28 +79,6 @@ dependencies {
     implementation libs.androidx.profileinstaller
     //将跟踪事件写入系统跟踪缓冲区。
     implementation libs.androidx.tracing.ktx
-
-
-    //WorkManager组件
-    // (Java only)
-    implementation libs.androidx.work.runtime
-    // Kotlin + coroutines
-    implementation libs.androidx.work.runtime.ktx
-    // optional - GCMNetworkManager support
-    implementation libs.androidx.work.gcm
-    // optional - Multiprocess support
-    implementation libs.androidx.work.multiprocess
-    // optional - Test helpers
-    androidTestImplementation libs.androidx.work.testing
-
-
-    //paging组件
-    implementation libs.androidx.paging.runtime
-    implementation libs.androidx.paging.runtime.ktx
-    // optional - Jetpack Compose integration
-    implementation libs.androidx.paging.compose
-    // alternatively - without Android dependencies for tests
-    testImplementation libs.androidx.paging.common
 
 
     // Lifecycle components
@@ -185,21 +137,6 @@ dependencies {
     implementation libs.androidx.hilt.navigation.compose
     kapt libs.hilt.compiler
 
-
-    //网络
-    implementation libs.okhttp
-    implementation libs.okhttp.logging.interceptor
-    implementation libs.okio
-    implementation libs.okio.jvm
-    implementation libs.retrofit
-    implementation libs.retrofit.converter.gson
-    implementation libs.gson
-    implementation libs.glide
-    ksp libs.glide.compiler
-
-
-    //常用组件
-    implementation libs.timber
     //kotlin序列号库,需要添加插件kotlin-serialization，jetbrains-kotlin-jvm
     implementation libs.kotlinSerializationCore
 
@@ -215,8 +152,8 @@ dependencies {
     implementation libs.androidx.compose.material3.adaptive.layout
     implementation libs.androidx.compose.material3.adaptive.navigation
 
+
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
-
 }

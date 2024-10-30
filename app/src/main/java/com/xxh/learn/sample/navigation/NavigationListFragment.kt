@@ -2,16 +2,17 @@ package com.xxh.learn.sample.navigation
 
 import android.content.Intent
 import com.xxh.basic.ListBaseFragment
+import com.xxh.learn.fragment.NavigationFragmentActivity
 
 
 class NavigationListFragment : ListBaseFragment(){
     override fun setData(): Array<String> = arrayOf(
-        "NavigationSample",
+        "NavigationFragment",
     )
 
     override fun itemClickHandle(name: String) {
         val clazz: Class<*>? = when (name) {
-           // "NavigationSample" -> NavigationMainActivity::class.java
+            "NavigationFragment" -> NavigationFragmentActivity::class.java
             else -> null
         }
         clazz?.let {
