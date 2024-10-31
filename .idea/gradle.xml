@@ -23,6 +23,7 @@
             <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/navigation/donuttracker" />
             <option value="$PROJECT_DIR$/navigation/fragment" />
+            <option value="$PROJECT_DIR$/navigation/navigationadvancedsample" />
             <option value="$PROJECT_DIR$/room" />
             <option value="$PROJECT_DIR$/room/busschedule" />
             <option value="$PROJECT_DIR$/room/inventory" />
