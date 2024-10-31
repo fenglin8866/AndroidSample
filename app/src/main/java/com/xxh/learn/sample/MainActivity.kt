@@ -2,19 +2,15 @@ package com.xxh.learn.sample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.activity
 import androidx.navigation.createGraph
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.fragment
-import androidx.navigation.navigation
 import com.xxh.learn.sample.compose.ComposeListFragment
 import com.xxh.learn.sample.di.DIListFragment
 import com.xxh.learn.sample.lang.LangListFragment
 import com.xxh.learn.sample.navigation.NavigationListFragment
 import com.xxh.learn.sample.room.RoomListFragment
 import com.xxh.learn.sample.sample.SampleListFragment
-import kotlinx.serialization.Serializable
 
 
 class MainActivity : AppCompatActivity() {
