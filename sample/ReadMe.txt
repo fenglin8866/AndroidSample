@@ -1,3 +1,22 @@
+一、BasicSample项目
+地址：https://github.com/android/architecture-components-samples
+位置：architecture-components-samples中的BasicSample
+分支：main
+最后提交记录：
+Author: Sergey Vasilinets <sergeyv@google.com>
+Date:   Sat Jul 1 13:36:11 2023 +0100
+    Use ActivityContracts in WorkManagerSample
+    bug: 208344986
+    Test: Manual
+
+是否维护：后续应该不维护
+集成时间：2024.10.19
+改动点
+1、Application改造
+2、ProductListViewModel异常修复
+
+
+
 一、GithubBrowser项目
 地址：https://github.com/android/architecture-components-samples
 位置：architecture-components-samples中的GithubBrowserSample

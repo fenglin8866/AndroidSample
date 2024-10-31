@@ -62,6 +62,7 @@ dependencies {
     implementation project(':lang:kotlin')
     implementation project(':lang:java')
     implementation project(':compose:m3')
+    implementation project(':sample:basic')
     implementation project(':sample:githubbrowser')
     implementation project(':sample:sunflower')
     implementation project(':sample:todo')
