@@ -1,4 +1,4 @@
-一、BasicSample项目
+BasicSample项目
 地址：https://github.com/android/architecture-components-samples
 位置：architecture-components-samples中的BasicSample
 分支：main
@@ -17,7 +17,7 @@ Date:   Sat Jul 1 13:36:11 2023 +0100
 
 
 
-一、GithubBrowser项目
+GithubBrowser项目
 地址：https://github.com/android/architecture-components-samples
 位置：architecture-components-samples中的GithubBrowserSample
 分支：main
@@ -35,7 +35,7 @@ Date:   Sat Jul 1 13:36:11 2023 +0100
 2、user_fragment布局中..Args类型报错，改为自定义类型。
 
 
-二、Sunflower项目
+Sunflower项目
 地址：https://github.com/android/sunflower
 分支：views
 最后提交记录：
@@ -50,7 +50,7 @@ Date:   Tue Oct 17 10:31:01 2023 -0700
 1、移除StartUp组件
 
 
-三、todo项目
+Todo项目
 地址：https://github.com/android/architecture-samples/tree/main
 分支：views
 最后提交记录：
