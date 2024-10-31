@@ -21,10 +21,18 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <!--配置静态shortcut，可配置动态-->
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
         <activity
             android:name=".share.ShareActivity"
-            android:exported="true" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.xxh.summary.short1" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".feedbacktest.FeedbackTestActivity"

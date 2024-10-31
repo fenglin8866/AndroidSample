@@ -1,0 +1,16 @@
+
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="camera"
+        android:enabled="true"
+        android:icon="@drawable/point2"
+        android:shortcutShortLabel="@string/app_name"
+        android:shortcutLongLabel="@string/app_name"
+        android:shortcutDisabledMessage="@string/app_name">
+        <intent
+            android:action="com.xxh.summary.short1"
+            android:targetPackage="com.xxh.summary"
+            android:targetClass="com.xxh.summary.share.ShareActivity" />
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+</shortcuts>
