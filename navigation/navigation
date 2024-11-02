@@ -1,3 +1,10 @@
+总结：
+目的地中定义的参数，能作为动态数据。可以用于路径，label等等。
+例如：
+android:label="@string/word_list_fragment_label"
+ <string name="word_list_fragment_label">Words That Start With {letter}</string>
+其中字符串中用到了参数letter
+
 1、基本原理
 导航图
    构建方式：

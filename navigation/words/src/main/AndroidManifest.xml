@@ -18,7 +18,7 @@
     package="com.example.wordsapp">
 
     <application>
-        <activity android:name=".MainActivity"
+        <activity android:name=".WordsMainActivity"
             android:theme="@style/Theme.Words"
             android:exported="true">
         </activity>

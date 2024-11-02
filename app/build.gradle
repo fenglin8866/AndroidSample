@@ -66,6 +66,7 @@ dependencies {
     implementation project(':sample:githubbrowser')
     implementation project(':sample:sunflower')
     implementation project(':sample:todo')
+    implementation project(':navigation:words')
     implementation project(':navigation:fragment')
     implementation project(':navigation:donuttracker')
     implementation project(':navigation:advanced')
