@@ -27,6 +27,7 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
+        setupViews()
     }
 
     open fun setupViews(){
