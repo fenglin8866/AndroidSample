@@ -4,7 +4,17 @@ fragment模块
 1、fragment构建模板样式
 2、navigation官网学习示例
 
-word模块
+
+sample模块：Jetpack 导航
+地址：https://github.com/android/codelab-android-navigation
+codelab：https://developer.android.google.cn/codelabs/android-navigation?hl=zh-cn#0
+分支：master
+是否维护：后续不维护，This repository has been archived by the owner on Aug 17, 2023. It is now read-only.
+集成时间：2024.11.3
+改动点
+1、app切换为module模块修改
+
+word模块：fragment 和 Navigation 组件
 地址：https://github.com/google-developer-training/android-basics-kotlin-words-app/tree/activities
 codelab：https://developer.android.google.cn/codelabs/basic-android-kotlin-training-fragments-navigation-component?hl=zh-cn#0
 分支：start：activities     end：main
