@@ -21,6 +21,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -55,11 +56,25 @@ class NavigationSampleActivity : AppCompatActivity() {
         // Set up Action Bar
         val navController = host.navController
 
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+       // appBarConfiguration = AppBarConfiguration(navController.graph)
 
-        // TODO STEP 9.5 - Create an AppBarConfiguration with the correct top-level destinations
+        /**
+         *  TODO STEP 9.5 - Create an AppBarConfiguration with the correct top-level destinations
+         *
+         *  存在的问题：
+         *  1、不同分辨率的布局中ID必须相互对应。
+         *  2、不同分辨率的布局，同一个ID对应不同的视图，切换会出现异常。尽量较少这种情况。
+         *  java.lang.IllegalArgumentException: Wrong state class, expecting View State but received class androidx.drawerlayout.widget.DrawerLayout$SavedState instead.
+         *  This usually happens when two views of different type have the same id in the same hierarchy. This view's id is id/drawer_layout. Make sure other views do not use the same id.
+         */
         // You should also remove the old appBarConfiguration setup above
-        val drawerLayout : DrawerLayout? = findViewById(R.id.drawer_layout)
+        var drawerLayout: DrawerLayout? = null
+        val layout: View = findViewById(R.id.drawer_layout)
+
+        if (layout is DrawerLayout) {
+            drawerLayout = layout
+        }
+
         appBarConfiguration = AppBarConfiguration(
                 setOf(R.id.home_dest, R.id.deeplink_dest),
                 drawerLayout)
