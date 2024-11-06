@@ -28,6 +28,10 @@
             <option value="$PROJECT_DIR$/navigation/fragment" />
             <option value="$PROJECT_DIR$/navigation/sample" />
             <option value="$PROJECT_DIR$/navigation/words" />
+            <option value="$PROJECT_DIR$/paging" />
+            <option value="$PROJECT_DIR$/paging/lib" />
+            <option value="$PROJECT_DIR$/paging/networksample" />
+            <option value="$PROJECT_DIR$/paging/sample" />
             <option value="$PROJECT_DIR$/room" />
             <option value="$PROJECT_DIR$/room/busschedule" />
             <option value="$PROJECT_DIR$/room/inventory" />

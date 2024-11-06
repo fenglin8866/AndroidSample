@@ -72,6 +72,8 @@ dependencies {
     implementation project(':navigation:advanced')
     implementation project(':navigation:basic')
     implementation project(':navigation:sample')
+    implementation project(':paging:sample')
+    implementation project(':paging:networksample')
 
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat
@@ -181,6 +183,7 @@ dependencies {
     // Room components
     implementation libs.androidx.room.runtime
     implementation libs.androidx.room.ktx
+    implementation libs.androidx.room.paging
     annotationProcessor libs.androidx.room.compiler
     // To use Kotlin Symbol Processing (KSP)
     ksp libs.androidx.room.compiler

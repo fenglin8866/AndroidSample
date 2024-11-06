@@ -13,18 +13,20 @@ class MainListFragment : ListBaseFragment() {
         "DI",
         "Lifecycle",
         "Navigation",
+        "Paging",
         "Compose",
         "Sample",
     )
 
     override fun itemClickHandle(name: String) {
-        val navDestination:Any? = when (name) {
+        val navDestination: Any? = when (name) {
             "Room" -> NavDestinations.Room
             "DI" -> NavDestinations.DI
             "Lang" -> NavDestinations.Lang
             "Navigation" -> NavDestinations.Navigation
             "Sample" -> NavDestinations.Sample
             "Compose" -> NavDestinations.Compose
+            "Paging" -> NavDestinations.Paging
             else -> null
         }
         navDestination?.let {
