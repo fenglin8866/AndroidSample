@@ -17,4 +17,6 @@ class NavDestinations {
     object Sample
     @Serializable
     object Navigation
+    @Serializable
+    object Paging
 }
