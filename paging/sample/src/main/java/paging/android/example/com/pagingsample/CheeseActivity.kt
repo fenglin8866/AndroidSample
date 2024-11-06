@@ -37,7 +37,8 @@ import paging.android.example.com.pagingsample.databinding.ActivityCheeseBinding
 class CheeseActivity : AppCompatActivity() {
     lateinit var binding: ActivityCheeseBinding
         private set
-    private val viewModel by viewModels<CheeseViewModel> { CheeseViewModelFactory(application) }
+    private val viewModel by viewModels<CheeseViewModel> {
+        CheeseViewModelFactory(application) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

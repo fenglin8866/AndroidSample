@@ -35,7 +35,7 @@ abstract class CheeseDb : RoomDatabase() {
             if (instance == null) {
                 instance = Room.databaseBuilder(context.applicationContext,
                         CheeseDb::class.java, "CheeseDatabase")
-                        .addCallback(object : RoomDatabase.Callback() {
+                        .addCallback(object : Callback() {
                             override fun onCreate(db: SupportSQLiteDatabase) {
                                 fillInDb(context.applicationContext)
                             }

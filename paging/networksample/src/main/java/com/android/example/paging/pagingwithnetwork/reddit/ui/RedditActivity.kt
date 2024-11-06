@@ -43,8 +43,7 @@ import kotlinx.coroutines.flow.filter
  * The intent arguments can be modified to make it use a different repository (see MainActivity).
  */
 class RedditActivity : AppCompatActivity() {
-    lateinit var binding: ActivityRedditBinding
-        private set
+    private lateinit var binding: ActivityRedditBinding
 
     private val model: SubRedditViewModel by viewModels {
         object : AbstractSavedStateViewModelFactory(this, null) {
