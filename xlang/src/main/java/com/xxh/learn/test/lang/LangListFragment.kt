@@ -1,4 +1,4 @@
-package com.xxh.learn.sample.lang
+package com.xxh.learn.test.lang
 
 import com.xxh.basic.ListBaseFragment
 import com.xxh.learn.java.JavaTestMain

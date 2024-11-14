@@ -10,8 +10,6 @@ class NavDestinations {
     @Serializable
     object DI
     @Serializable
-    object Lang
-    @Serializable
     object Room
     @Serializable
     object Sample
