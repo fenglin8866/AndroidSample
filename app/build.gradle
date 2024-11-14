@@ -59,8 +59,6 @@ dependencies {
     implementation project(':room:inventory')
     implementation project(':di:logs')
     implementation project(':di:login')
-    implementation project(':lang:kotlin')
-    implementation project(':lang:java')
     implementation project(':compose:m3')
     implementation project(':sample:basic')
     implementation project(':sample:githubbrowser')
