@@ -30,37 +30,9 @@ demo项目
 2、对于codelab拉出start和end分支
 3、自己的修改点
 
-4、示例：功能解析，知识点解析，解决问题点，设计思路
+4、示例：设计思路，功能解析，涉及知识点，问题与解决，总结
 5、完整知识点重构
 
---------------------------------------------
-模板
-sample项目
-地址：https://github.com/android/architecture-components-samples
-位置：architecture-components-samples中的PagingSample
-分支：main
-最后提交记录：
-Author: Sergey Vasilinets <sergeyv@google.com>
-Date:   Sat Jul 1 13:36:11 2023 +0100
-    Use ActivityContracts in WorkManagerSample
-    bug: 208344986
-    Test: Manual
-
-是否维护：后续应该不维护
-集成时间：2024.11.6
-改动点：
-1、app改造为lib
-
----------------
-功能解析:
-
-知识点解析:
-
-解决问题点:
-
-设计思路:
-
-完整知识点重构：
 
 =======================项目文档说明end===================================
 
