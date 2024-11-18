@@ -17,4 +17,6 @@ class NavDestinations {
     object Navigation
     @Serializable
     object Paging
+    @Serializable
+    object Component
 }

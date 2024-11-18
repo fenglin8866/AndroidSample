@@ -54,6 +54,7 @@ android {
 dependencies {
 
     implementation project(':core:basic')
+    implementation project(':core:component')
     implementation project(':room:words')
     implementation project(':room:busschedule')
     implementation project(':room:inventory')

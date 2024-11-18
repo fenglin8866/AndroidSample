@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.xxh.dev.databinding.ActivityMainBinding
 import com.xxh.dev.service.TestService
+import com.xxh.dev.utils.CommonUtils
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,9 +28,10 @@ class MainActivity : AppCompatActivity() {
         }
         mBinding.apply {
             button.setOnClickListener {
-                val intent= Intent(this@MainActivity,TestService::class.java)
+               /* val intent= Intent(this@MainActivity,TestService::class.java)
                 stopService(intent)
-                startService(intent)
+                startService(intent)*/
+                CommonUtils.simInfo()
             }
             button2.setOnClickListener{
                 val intent= Intent(this@MainActivity,TestService::class.java)

@@ -15,6 +15,7 @@ class MainListFragment : ListBaseFragment() {
         "Paging",
         "Compose",
         "Sample",
+        "Component",
     )
 
     override fun itemClickHandle(name: String) {
@@ -25,6 +26,7 @@ class MainListFragment : ListBaseFragment() {
             "Sample" -> NavDestinations.Sample
             "Compose" -> NavDestinations.Compose
             "Paging" -> NavDestinations.Paging
+            "Component" -> NavDestinations.Component
             else -> null
         }
         navDestination?.let {

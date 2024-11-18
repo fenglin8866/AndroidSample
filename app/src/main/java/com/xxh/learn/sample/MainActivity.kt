@@ -2,6 +2,7 @@ package com.xxh.learn.sample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.activity
 import androidx.navigation.createGraph
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.fragment
@@ -11,6 +12,7 @@ import com.xxh.learn.sample.navigation.NavigationListFragment
 import com.xxh.learn.sample.paging.PagingListFragment
 import com.xxh.learn.sample.room.RoomListFragment
 import com.xxh.learn.sample.sample.SampleListFragment
+import com.xxh.learn.system.component.ComponentMainActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,17 +26,20 @@ class MainActivity : AppCompatActivity() {
     private fun initNav() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView_main) as NavHostFragment
-        val navController=navHostFragment.navController
-        navController.graph=navController.createGraph(
+        val navController = navHostFragment.navController
+        navController.graph = navController.createGraph(
             startDestination = NavDestinations.Main
-        ){
-            fragment<MainListFragment,NavDestinations.Main>()
-            fragment<ComposeListFragment,NavDestinations.Compose>()
-            fragment<DIListFragment,NavDestinations.DI>()
-            fragment<RoomListFragment,NavDestinations.Room>()
-            fragment<SampleListFragment,NavDestinations.Sample>()
-            fragment<NavigationListFragment,NavDestinations.Navigation>()
-            fragment<PagingListFragment,NavDestinations.Paging>()
+        ) {
+            fragment<MainListFragment, NavDestinations.Main>()
+            fragment<ComposeListFragment, NavDestinations.Compose>()
+            fragment<DIListFragment, NavDestinations.DI>()
+            fragment<RoomListFragment, NavDestinations.Room>()
+            fragment<SampleListFragment, NavDestinations.Sample>()
+            fragment<NavigationListFragment, NavDestinations.Navigation>()
+            fragment<PagingListFragment, NavDestinations.Paging>()
+            activity<NavDestinations.Component> {
+                activityClass = ComponentMainActivity::class
+            }
         }
     }
 }

@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/compose/m3" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/core/basic" />
+            <option value="$PROJECT_DIR$/core/component" />
             <option value="$PROJECT_DIR$/di" />
             <option value="$PROJECT_DIR$/di/login" />
             <option value="$PROJECT_DIR$/di/logs" />
