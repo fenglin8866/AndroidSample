@@ -30,7 +30,8 @@ class BasicViewsActivity : AppCompatActivity() {
         binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null)
-                .setAnchorView(R.id.fab).show()
+                .setAnchorView(R.id.fab)//设置锚点，在组件的上方弹出
+                .show()
         }
     }
 
