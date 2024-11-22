@@ -1,12 +1,20 @@
 package com.xxh.learn.demo
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.snackbar.Snackbar
+import com.xxh.learn.demo.component.TestBasicViewsActivity
 import com.xxh.learn.demo.databinding.ActivityMainBinding
+import com.xxh.learn.demo.utils.Utils
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,11 +45,17 @@ class MainActivity : AppCompatActivity() {
     private fun setUpView() {
         mBinding.apply {
             button.setOnClickListener {
-                textView.text = viewModel.getApplication()
+                startActivity(Intent(this@MainActivity,TestBasicViewsActivity::class.java))
+                //textView.text = viewModel.getApplication()
+                /*val url = "https://developers.android.com"
+                val intent = CustomTabsIntent.Builder().build()
+                intent.launchUrl(this@MainActivity, Uri.parse(url))*/
+                //Log.i("xxh00", Utils.getDeviceId())
             }
             button2.setOnClickListener {
                 //textView2.text = viewModel.getSavedTest()
-                editTextText.setText(savedTestDataManager.getTextData())
+              //  editTextText.setText(savedTestDataManager.getTextData())
+               // Log.i("xxh00", Utils.getDeviceId())
             }
             button3.setOnClickListener {
                 //textView2.text = viewModel.getSavedTest()

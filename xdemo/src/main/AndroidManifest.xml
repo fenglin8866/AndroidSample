@@ -9,7 +9,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidSample">
         <activity
-            android:name="com.xxh.learn.demo.MainActivity"
+            android:name=".component.TestBasicViewsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

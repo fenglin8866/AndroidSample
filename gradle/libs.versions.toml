@@ -4,6 +4,7 @@ agp = "8.5.2"
 androidxComposeBom = "2024.10.00"
 annotation = "1.9.0"
 annotationExperimental = "1.4.1"
+browser = "1.8.0"
 cardview = "1.0.0"
 coreAnimation = "1.0.0"
 datastorePreferences = "1.1.1"
@@ -78,6 +79,7 @@ androidx-preference-ktx = { module = "androidx.preference:preference-ktx", versi
 androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 androidx-preference = { group = "androidx.preference", name = "preference", version.ref = "preference" }
+androidx-browser = { module = "androidx.browser:browser", version.ref = "browser" }
 
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlinReflect" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }

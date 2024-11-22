@@ -10,20 +10,20 @@ import com.xxh.learn.system.component.databinding.ActivityScrollingBinding
 
 class ScrollingActivity : AppCompatActivity() {
 
-private lateinit var binding: ActivityScrollingBinding
+    private lateinit var binding: ActivityScrollingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-     binding = ActivityScrollingBinding.inflate(layoutInflater)
-     setContentView(binding.root)
+        binding = ActivityScrollingBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        setSupportActionBar(findViewById(R.id.toolbar))
+        setSupportActionBar(binding.toolbar)
         binding.toolbarLayout.title = title
         binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null)
-                    .setAnchorView(R.id.fab).show()
+                .setAction("Action", null)
+                .setAnchorView(R.id.fab).show()
         }
     }
 }

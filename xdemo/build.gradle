@@ -176,6 +176,10 @@ dependencies {
     implementation libs.glide
     ksp libs.glide.compiler
 
+    //AndroidX中常用组件
+    implementation libs.androidx.browser
+
+
 
     //常用组件
     implementation libs.timber

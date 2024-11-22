@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_basic_views"
+    app:startDestination="@id/firstBasicViewFragment">
+
+    <fragment
+        android:id="@+id/firstBasicViewFragment"
+        android:name="com.xxh.learn.demo.component.FirstBasicViewFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_first_basic_view">
+        <action
+            android:id="@+id/action_firstBasicViewFragment_to_secondBasicViewFragment"
+            app:destination="@id/secondBasicViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondBasicViewFragment"
+        android:name="com.xxh.learn.demo.component.SecondBasicViewFragment"
+        android:label="fragment_second"
+        tools:layout="@layout/fragment_second_basic_view">
+        <action
+            android:id="@+id/action_secondBasicViewFragment_to_firstBasicViewFragment"
+            app:destination="@id/firstBasicViewFragment" />
+    </fragment>
+</navigation>

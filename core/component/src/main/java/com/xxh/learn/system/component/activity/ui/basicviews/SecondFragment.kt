@@ -1,4 +1,4 @@
-package com.xxh.learn.system.component.activity
+package com.xxh.learn.system.component.activity.ui.basicviews
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
