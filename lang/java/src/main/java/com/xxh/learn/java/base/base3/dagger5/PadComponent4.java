@@ -1,6 +1,7 @@
 package com.xxh.learn.java.base.base3.dagger5;
 
-import dagger.BindsInstance;
+import com.xxh.learn.java.base.base3.dagger5.dependencies.MaxCPU;
+
 import dagger.Subcomponent;
 
 @Subcomponent(modules = PadModule.class)

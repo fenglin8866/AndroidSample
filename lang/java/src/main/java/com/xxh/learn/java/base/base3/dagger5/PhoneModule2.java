@@ -1,5 +1,7 @@
 package com.xxh.learn.java.base.base3.dagger5;
 
+import com.xxh.learn.java.base.base3.dagger5.dependencies.Ram;
+
 import dagger.Module;
 import dagger.Provides;
 

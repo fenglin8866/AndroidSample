@@ -1,6 +1,11 @@
 package com.xxh.learn.java.base.base3.dagger5;
 
 
+import com.xxh.learn.java.base.base3.dagger5.dependencies.Battery;
+import com.xxh.learn.java.base.base3.dagger5.dependencies.MaxCPU;
+import com.xxh.learn.java.base.base3.dagger5.dependencies.Ram;
+import com.xxh.learn.java.base.base3.dagger5.dependencies.Screen;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 

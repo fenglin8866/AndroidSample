@@ -1,14 +1,22 @@
 package com.xxh.learn.java;
 
-import com.xxh.learn.java.dagger.TestDagger;
+import com.xxh.learn.java.basic.BasicTest;
+import com.xxh.learn.java.daggertest.sample.Tool;
 
 import java.util.HashSet;
 import java.util.Set;
 
+
 public class JavaTestMain {
-    public static void javaMain(){
+    public static void javaMain() {
         System.out.println("java test");
-        TestDagger.test();
+        BasicTest.test2();
+        testDagger();
+    }
+
+    public static void testDagger() {
+        Tool tool = new Tool();
+        tool.run();
     }
 
     public static void test() {
@@ -48,7 +56,6 @@ public class JavaTestMain {
 
         Map<String, String> map = new HashMap<>();
         map.put("x","y");*/
-
 
 
         //System.out.println(map.);
@@ -100,4 +107,5 @@ public class JavaTestMain {
         });*/
 
     }
+
 }

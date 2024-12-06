@@ -7,7 +7,8 @@ public interface PadComponent3 {
     void injectPad(Pad pad);
 
     @Subcomponent.Builder
-    interface Builder{
+    interface
+    Builder{
 
         Builder padModule(PadModule module);
 

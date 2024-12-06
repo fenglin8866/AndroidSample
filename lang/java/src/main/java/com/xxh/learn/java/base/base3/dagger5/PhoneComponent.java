@@ -1,5 +1,10 @@
 package com.xxh.learn.java.base.base3.dagger5;
 
+import com.xxh.learn.java.base.base3.dagger5.dependencies.Battery;
+import com.xxh.learn.java.base.base3.dagger5.dependencies.CPU;
+import com.xxh.learn.java.base.base3.dagger5.dependencies.Ram;
+import com.xxh.learn.java.base.base3.dagger5.dependencies.Screen;
+
 import dagger.Component;
 
 @PhoneScope
