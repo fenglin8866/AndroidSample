@@ -18,6 +18,9 @@ package com.example.android.dagger.storage
 
 import android.content.Context
 
+/**
+ * 工具类，存储用户数据
+ */
 class SharedPreferencesStorage(context: Context) : Storage {
 
     private val sharedPreferences = context.getSharedPreferences("Dagger", Context.MODE_PRIVATE)

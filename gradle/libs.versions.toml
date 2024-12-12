@@ -142,6 +142,10 @@ androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "ro
 
 dagger = { module = "com.google.dagger:dagger", version.ref = "hilt" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "hilt" }
+dagger-android = { module = "com.google.dagger:dagger-android", version.ref = "hilt" }
+dagger-android-support = { module = "com.google.dagger:dagger-android-support", version.ref = "hilt" }
+dagger-android-processor = { module = "com.google.dagger:dagger-android-processor", version.ref = "hilt" }
+
 hilt-android-core = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }

@@ -17,3 +17,16 @@
 
 ========
 一个类有多个构造方法时，注意依赖注入项的区分。
+===================================================================
+dagger1应用：
+示例：https://developer.android.google.cn/codelabs/android-dagger#0
+
+github：https://github.com/android/codelab-android-dagger/tree/main
+
+
+
+架构蓝图
+github：https://github.com/android/architecture-samples/tree/dev-dagger
+
+
+

@@ -6,7 +6,12 @@ import dagger.internal.Factory;
 
 public class PenFactory implements Factory<Pen> {
 
-    public static PenFactory create(){
+    private static final class Holder {
+        private static final PenFactory INSTANCE = new PenFactory();
+    }
+
+    //静态内部类构建对象
+    public static PenFactory create() {
         return Holder.INSTANCE;
     }
 
@@ -15,12 +20,8 @@ public class PenFactory implements Factory<Pen> {
         return newInstance();
     }
 
-    public static Pen newInstance(){
+    public static Pen newInstance() {
         return new Pen();
-    }
-
-    private static final class Holder{
-        private static final  PenFactory INSTANCE=new PenFactory();
     }
 
 }

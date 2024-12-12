@@ -18,12 +18,17 @@ package com.example.android.dagger.user
 
 import com.example.android.dagger.storage.Storage
 
-private const val REGISTERED_USER = "registered_user"
+const val REGISTERED_USER = "registered_user"
 private const val PASSWORD_SUFFIX = "password"
 
 /**
  * Handles User lifecycle. Manages registrations, logs in and logs out.
  * Knows when the user is logged in.
+ * 处理用户生命周期。管理注册、登录和注销。知道用户何时登录。
+ *
+ * UserDataRepository对象有无判断是否登录。不能直接使用依赖注入。
+ * 这也是合理的，UserManager不仅处理用户生命周期，而且管理用户数据。
+ *
  */
 class UserManager(private val storage: Storage) {
 
@@ -31,6 +36,9 @@ class UserManager(private val storage: Storage) {
      *  UserDataRepository is specific to a logged in user. This determines if the user
      *  is logged in or not, when the user logs in, a new instance will be created.
      *  When the user logs out, this will be null.
+     *  UserDataRepository 特定于已登录的用户。这决定了用户是否已登录，当用户登录时，将创建一个新实例。当用户注销时，这将为 null。
+     *
+     *
      */
     var userDataRepository: UserDataRepository? = null
 
@@ -93,6 +101,7 @@ class UserManager(private val storage: Storage) {
      * 登录成功操作
      */
     private fun userJustLoggedIn() {
-        userDataRepository = UserDataRepository(this)
+        //todo改造点
+        userDataRepository = UserDataRepository(storage)
     }
 }
