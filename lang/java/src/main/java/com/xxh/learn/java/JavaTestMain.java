@@ -2,6 +2,11 @@ package com.xxh.learn.java;
 
 import com.xxh.learn.java.basic.BasicTest;
 import com.xxh.learn.java.daggertest.sample.Tool;
+import com.xxh.learn.java.daggertest.sample.sub.People;
+import com.xxh.learn.java.daggertest.sample.sub2.Man;
+import com.xxh.learn.java.daggertest.sample.sub3.Woman;
+import com.xxh.learn.java.daggertest.sample.sub4.Human;
+import com.xxh.learn.java.daggertest.sample2.Work;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,7 +22,27 @@ public class JavaTestMain {
     public static void testDagger() {
         Tool tool = new Tool();
         tool.run();
+        print();
+        People people=new People();
+        people.run();
+        print();
+        Man man=new Man();
+        man.run();
+        print();
+        Woman woman=new Woman();
+        woman.run();
+        print();
+        Human human=new Human();
+        human.run();
+        print();
+        Work work=new Work();
+        work.test();
     }
+
+    public static void print(){
+        System.out.println("====================================================");
+    }
+
 
     public static void test() {
 

@@ -26,6 +26,5 @@ public interface PhoneComponent {
 
     PadComponent4.Builder padComponent4Builder();
 
-
     PadComponent5.Factory padComponent5Factory();
 }

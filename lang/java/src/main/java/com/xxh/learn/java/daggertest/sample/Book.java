@@ -3,9 +3,11 @@ package com.xxh.learn.java.daggertest.sample;
 import javax.inject.Inject;
 
 public class Book {
+
     private String name;
+
     @Inject
-    public Book(String name) {
+    public Book() {
     }
 
     public void read(){

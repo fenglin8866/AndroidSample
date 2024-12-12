@@ -2,6 +2,7 @@ package com.xxh.learn.java.daggertest.test.dagger;
 
 import com.xxh.learn.java.daggertest.test.Book;
 import com.xxh.learn.java.daggertest.test.Car;
+import com.xxh.learn.java.daggertest.test.Pen;
 import com.xxh.learn.java.daggertest.test.Phone;
 import com.xxh.learn.java.daggertest.test.Tool;
 import com.xxh.learn.java.daggertest.test.ToolComponent;
@@ -88,6 +89,10 @@ public class XToolComponent {
             return ToolModelCarFactory.providerCar(model,ToolModelEngineFactory.providerEngine(model));
         }
 
+        private Phone phone(){
+            return new Phone(new Pen());
+        }
+
 
         /*private void injectTool(Tool tool) {
             Tool_MembersInjector.create(
@@ -104,7 +109,7 @@ public class XToolComponent {
                     new BookFactory(),
                     new ToolModelCarFactory(model,new ToolModelEngineFactory(model)),
                     new ToolModelHouseFactory(model),
-                    new PhoneFactory()
+                    PhoneFactory.create(PenFactory.create())
             ).injectMembers(tool);
             return tool;
         }
@@ -112,7 +117,7 @@ public class XToolComponent {
         //逻辑简单，直接使用静态方法
         private Tool injectTool2(Tool instance) {
             ToolMembersInjector.injectHouse(instance, ToolModelHouseFactory.providerHouse(model));
-            ToolMembersInjector.injectPhone(instance, new Phone());
+            ToolMembersInjector.injectPhone(instance, phone());
             ToolMembersInjector.injectCar(instance, car());
             ToolMembersInjector.injectBook(instance, new Book());
             return instance;

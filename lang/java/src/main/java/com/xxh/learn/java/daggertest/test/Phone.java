@@ -1,12 +1,13 @@
 package com.xxh.learn.java.daggertest.test;
 
-import javax.inject.Inject;
-
 public class Phone {
-    public Phone(){
+    private Pen pen;
 
+    public Phone(Pen pen) {
+        this.pen = pen;
     }
-    public void use(){
+
+    public void use() {
         System.out.println("看手机");
     }
 }
