@@ -26,6 +26,7 @@ Dagger实现总结
  解决：
  1、所有@Bind定义为一个@Module的接口类
  2、将@Bind转换为@Provider方法
+ 3、定义静态方法
 
  ============================================
  工厂方法
@@ -65,6 +66,9 @@ Component
 SubComponent能访问Component所有依赖，Component不能访问SubComponent
 SubComponent必须依赖Component构建，不能独立构建。
 代码实现：Component的实现对象传入SubComponent的实现对象。
+SubComponent是可以相互引用的，类似类继承可以一层层的传递。
+SuComponent中的注入，可以直接使用父级的所用对象。
+
 
 3、@Factory和@Builder
 可以应用于Component和SubComponent。
@@ -107,6 +111,17 @@ model类可以包含其他model类。
 当 @Inject 在类构造函数上进行注释时，它会告诉 Dagger 如何提供该类的实例。
 
 
+===========
+@Binds :
+表示父类与子类，父类不一定必须是接口，抽象类，也可以是正常类。
+
+作用域标注在@Binds方法与标注在构造方法中是一样的。
+
+
+==============
+作用域标注位置
+1、model中的方法
+2、构造方法中的类
 
 
 

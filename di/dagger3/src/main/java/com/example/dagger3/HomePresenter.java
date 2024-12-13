@@ -2,12 +2,15 @@ package com.example.dagger3;
 
 import com.example.dagger3.data.CarResource;
 
+import javax.inject.Inject;
+
 public class HomePresenter implements HomeContract.IHomePresenter {
 
     private HomeContract.IHomeView mView;
 
     private CarResource mCarResource;
 
+    @Inject
     public HomePresenter(CarResource carResource) {
         mCarResource = carResource;
     }

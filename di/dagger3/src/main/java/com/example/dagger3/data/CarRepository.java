@@ -2,23 +2,14 @@ package com.example.dagger3.data;
 
 import java.util.UUID;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+//@Singleton
 public class CarRepository implements CarResource {
 
-    private static volatile CarRepository mInstance;
-
-    private CarRepository(){}
-
-
-    public static CarRepository getInstance(){
-        if(mInstance==null){
-            synchronized (CarRepository.class){
-                if(mInstance==null){
-                    return new CarRepository();
-                }
-            }
-        }
-        return mInstance;
-    }
+    @Inject
+    public CarRepository(){}
 
     @Override
     public Car getRandomCar() {

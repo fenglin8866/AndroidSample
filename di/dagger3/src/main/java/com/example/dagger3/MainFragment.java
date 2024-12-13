@@ -1,5 +1,6 @@
 package com.example.dagger3;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,20 +15,28 @@ import android.widget.TextView;
 
 import com.example.dagger3.data.Car;
 
+import javax.inject.Inject;
+
 
 public class MainFragment extends Fragment implements HomeContract.IHomeView, View.OnClickListener {
 
+    @Inject
     HomeContract.IHomePresenter mHomePresenter;
 
     private TextView mTvCarInstruction;
     private Button mBtnNextCar;
 
+    @Inject
     public MainFragment() {
 
     }
 
-    public MainFragment(HomeContract.IHomePresenter presenter) {
-        mHomePresenter = presenter;
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        MainActivity homeActivity = (MainActivity) getActivity();
+
+        homeActivity.getComponent().homeFragmentComponent().build().inject(this);
     }
 
     @Override
