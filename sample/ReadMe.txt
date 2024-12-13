@@ -18,6 +18,9 @@ Date:   Sat Jul 1 13:36:11 2023 +0100
 
 
 GithubBrowser项目
+dagger-android相关
+https://gitee.com/renhui112115/GithubBrowserSample
+
 地址：https://github.com/android/architecture-components-samples
 位置：architecture-components-samples中的GithubBrowserSample
 分支：main
