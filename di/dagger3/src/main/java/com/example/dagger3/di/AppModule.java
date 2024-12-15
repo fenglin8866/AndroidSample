@@ -1,5 +1,6 @@
 package com.example.dagger3.di;
 
+import com.example.dagger3.HomeActivity;
 import com.example.dagger3.data.CarRepository;
 import com.example.dagger3.data.CarResource;
 
@@ -8,8 +9,9 @@ import javax.inject.Singleton;
 
 import dagger.Binds;
 import dagger.Module;
+import dagger.android.ContributesAndroidInjector;
 
-@Module(subcomponents = HomeActivityComponent.class)
+@Module
 public abstract class AppModule {
     /**
      * 作用域标注在该方法与标注在构造方法中是一样的。
@@ -19,4 +21,14 @@ public abstract class AppModule {
     @Singleton
     @Binds
     abstract CarResource carResource(CarRepository carRepository);
+
+    /**
+     *  ContributesAndroidInjector:使用modules生成一个SubComponent
+     *  SubComponent继承于AndroidInjector<T> ,T表示对应的android组件。
+     *  SubComponent会自动被当前Module声明为子组件。
+     * @return
+     */
+    @ActivityScoped
+    @ContributesAndroidInjector(modules = HomeActivityModule.class)
+    abstract HomeActivity homeActivity();
 }

@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +16,10 @@ import com.example.dagger3.data.Car;
 
 import javax.inject.Inject;
 
+import dagger.android.support.DaggerFragment;
 
-public class MainFragment extends Fragment implements HomeContract.IHomeView, View.OnClickListener {
+
+public class HomeFragment extends DaggerFragment implements HomeContract.IHomeView, View.OnClickListener {
 
     @Inject
     HomeContract.IHomePresenter mHomePresenter;
@@ -27,16 +28,13 @@ public class MainFragment extends Fragment implements HomeContract.IHomeView, Vi
     private Button mBtnNextCar;
 
     @Inject
-    public MainFragment() {
+    public HomeFragment() {
 
     }
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        MainActivity homeActivity = (MainActivity) getActivity();
-
-        homeActivity.getComponent().homeFragmentComponent().build().inject(this);
     }
 
     @Override

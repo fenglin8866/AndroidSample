@@ -1,19 +1,19 @@
 package com.example.dagger3.di;
 
-import androidx.fragment.app.Fragment;
-
 import com.example.dagger3.HomeContract;
+import com.example.dagger3.HomeFragment;
 import com.example.dagger3.HomePresenter;
-import com.example.dagger3.MainFragment;
 
 import dagger.Binds;
 import dagger.Module;
+import dagger.android.ContributesAndroidInjector;
 
-@Module(subcomponents = HomeFragmentComponent.class)
+@Module
 public interface HomeActivityModule {
 
-    @Binds
-    Fragment provideHomeFragment(MainFragment fragment);
+    @FragmentScoped
+    @ContributesAndroidInjector
+    HomeFragment provideHomeFragment();
 
     @Binds
     HomeContract.IHomePresenter providePresenter(HomePresenter homePresenter);

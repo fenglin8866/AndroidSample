@@ -7,6 +7,9 @@ import com.xxh.learn.java.daggertest.sample.sub2.Man;
 import com.xxh.learn.java.daggertest.sample.sub3.Woman;
 import com.xxh.learn.java.daggertest.sample.sub4.Human;
 import com.xxh.learn.java.daggertest.sample2.Work;
+import com.xxh.learn.java.daggertest.test4.Test;
+import com.xxh.learn.java.daggertest.test5.DaggerMyComponent2;
+import com.xxh.learn.java.daggertest.test5.MyComponent2;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,8 +18,16 @@ import java.util.Set;
 public class JavaTestMain {
     public static void javaMain() {
         System.out.println("java test");
-        BasicTest.test2();
-        testDagger();
+        //BasicTest.test2();
+        testDagger2();
+    }
+    public static void testDagger2() {
+      /*  Test test=new Test();
+        test.test();*/
+        MyComponent2 component2= DaggerMyComponent2.create();
+        component2.longsByString();
+        component2.stringsByClass();
+
     }
 
     public static void testDagger() {
