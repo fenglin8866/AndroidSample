@@ -30,3 +30,10 @@ github：https://github.com/android/architecture-samples/tree/dev-dagger
 
 
 
+
+dagger2应用
+https://dagger.dev/dev-guide/android.html
+https://www.jianshu.com/p/15667e6ad0c1
+
+
+

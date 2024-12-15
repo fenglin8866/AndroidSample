@@ -9,15 +9,16 @@ import dagger.Module;
 import dagger.Provides;
 import dagger.android.AndroidInjector;
 import dagger.multibindings.ClassKey;
+import dagger.multibindings.IntoMap;
 import dagger.multibindings.IntoSet;
 
 @Module(subcomponents = {MainComponent.class})
 public abstract class MainModel {
     @Binds
+    @IntoMap
     @ClassKey(MainActivity.class)
-    @IntoSet
-    abstract AndroidInjector.Factory<? extends Activity>
-        bindYourActivityInjectorFactory(AndroidInjector.Builder builder);
+    abstract AndroidInjector.Factory<? >
+        bindYourActivityInjectorFactory(MainComponent.Factory factory);
     @Singleton
     @Provides
     static Student provideStudent(){

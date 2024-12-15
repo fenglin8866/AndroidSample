@@ -11,16 +11,16 @@ import dagger.android.HasAndroidInjector;
 
 public class App extends Application implements HasAndroidInjector {
     @Inject
-    DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
+    DispatchingAndroidInjector<Object> dispatchingAndroidInjector;
 
     @Override
     public void onCreate() {
         super.onCreate();
-
+        DaggerAppComponent.create().inject(this);
     }
 
     @Override
     public AndroidInjector<Object> androidInjector() {
-        return null;
+        return dispatchingAndroidInjector;
     }
 }
