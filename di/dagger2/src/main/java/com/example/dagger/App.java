@@ -1,6 +1,5 @@
 package com.example.dagger;
 
-import android.app.Activity;
 import android.app.Application;
 
 import javax.inject.Inject;
