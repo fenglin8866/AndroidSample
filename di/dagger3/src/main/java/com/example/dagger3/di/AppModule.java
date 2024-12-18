@@ -26,6 +26,17 @@ public abstract class AppModule {
      *  ContributesAndroidInjector:使用modules生成一个SubComponent
      *  SubComponent继承于AndroidInjector<T> ,T表示对应的android组件。
      *  SubComponent会自动被当前Module声明为子组件。
+     *  ============================================================
+     *  ContributesAndroidInjector 生成一个
+     *  @Subcomponent(modules = {AndroidInjectionModule.class})
+     * public interface MainComponent extends AndroidInjector<MainActivity> {
+     *
+     *     @Subcomponent.Factory
+     *     interface Factory extends AndroidInjector.Factory<MainActivity> {
+     *
+     *     }
+     * }
+     *
      * @return
      */
     @ActivityScoped

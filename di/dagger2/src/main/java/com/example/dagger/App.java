@@ -2,6 +2,8 @@ package com.example.dagger;
 
 import android.app.Application;
 
+import com.example.dagger.di.DaggerAppComponent;
+
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
@@ -9,6 +11,7 @@ import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasAndroidInjector;
 
 public class App extends Application implements HasAndroidInjector {
+
     @Inject
     DispatchingAndroidInjector<Object> dispatchingAndroidInjector;
 

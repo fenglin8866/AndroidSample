@@ -21,6 +21,7 @@ import dagger.android.HasAndroidInjector;
 public class YourActivity extends AppCompatActivity implements HasAndroidInjector {
     @Inject
     DispatchingAndroidInjector<Object> androidInjector;
+
     @Inject
     Home home;
 

@@ -1,14 +1,12 @@
-package com.example.dagger;
+package com.example.dagger.di;
 
-import javax.inject.Singleton;
+import com.example.dagger.App;
 
 import dagger.Component;
 import dagger.android.AndroidInjectionModule;
-@Singleton
+
 @Component(modules = {AndroidInjectionModule.class,
-        MainModel.class,
-        YourActivityModule.class,
-        YourFragmentModule.class
+        AppModel.class,
 })
 public interface AppComponent {
     void inject(App app);
