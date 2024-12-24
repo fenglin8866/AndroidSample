@@ -134,6 +134,9 @@ Component之间可以添加依赖
 MultiBinds注解
 ============
 
+@BindsOptionalOf：可能存在的绑定。根据具体的情况决定。
+===================
+@BindsOptionalOf abstract Foo optionalFoo();
 
 
 

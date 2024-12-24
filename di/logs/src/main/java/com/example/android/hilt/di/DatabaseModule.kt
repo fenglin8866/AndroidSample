@@ -25,9 +25,7 @@ class DatabaseModule {
     @Singleton
     fun provideDB(@ApplicationContext appContext: Context): AppDatabase {
         return Room.databaseBuilder(
-            appContext,
-            AppDatabase::class.java,
-            "logging.db"
+            appContext, AppDatabase::class.java, "logging.db"
         ).build()
     }
 }
