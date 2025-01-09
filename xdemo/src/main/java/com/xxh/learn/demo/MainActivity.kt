@@ -4,6 +4,10 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.webkit.WebResourceError
+import android.webkit.WebResourceRequest
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -18,7 +22,7 @@ import com.xxh.learn.demo.utils.Utils
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: TestViewModel by viewModels{
+    private val viewModel: TestViewModel by viewModels {
         TestViewModel.Factory
     }
     private val viewModel2 by viewModels<TestViewModel> {
@@ -27,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
     private var _binding: ActivityMainBinding? = null
     private val mBinding: ActivityMainBinding get() = _binding!!
-    private val savedTestDataManager=SavedTestDataManager(this)
+    private val savedTestDataManager = SavedTestDataManager(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     private fun setUpView() {
         mBinding.apply {
             button.setOnClickListener {
-                startActivity(Intent(this@MainActivity,TestBasicViewsActivity::class.java))
+                startActivity(Intent(this@MainActivity,WebViewActivity::class.java))
                 //textView.text = viewModel.getApplication()
                 /*val url = "https://developers.android.com"
                 val intent = CustomTabsIntent.Builder().build()
