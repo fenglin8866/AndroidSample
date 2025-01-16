@@ -14,6 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackSample">
         <activity
+            android:name=".webview.WebViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ad.InteractiveAdActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -21,23 +27,21 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <!--配置静态shortcut，可配置动态-->
+            <!-- 配置静态shortcut，可配置动态 -->
             <meta-data
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
         </activity>
         <activity
             android:name=".share.ShareActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.xxh.summary.short1" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".feedbacktest.FeedbackTestActivity"
             android:exported="false" />
-
         <activity
             android:name=".feedbacktest.FeedbackMainActivity"
             android:exported="false" />
@@ -46,7 +50,6 @@
             android:name=".feedback.log.LogService"
             android:enabled="true"
             android:exported="false" />
-
         <service
             android:name=".feedback.log.LogService"
             android:enabled="true"
@@ -55,22 +58,18 @@
         <activity
             android:name=".log.LogActivity2"
             android:exported="false" />
-
         <activity
             android:name=".log.LogActivity"
             android:exported="false" />
-
         <activity
             android:name=".viewpage.ViewPagerActivity2"
             android:exported="false" />
-
         <activity
             android:name=".viewpage.ViewPagerActivity"
             android:exported="false" />
         <activity
             android:name=".ui.LayoutActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>
