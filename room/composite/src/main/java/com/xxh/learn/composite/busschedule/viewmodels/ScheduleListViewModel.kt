@@ -5,9 +5,10 @@ import androidx.lifecycle.ViewModel
 import com.xxh.learn.composite.database.schedule.Schedule
 import com.xxh.learn.composite.database.schedule.ScheduleDao
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 @HiltViewModel
-class ScheduleListViewModel(private val scheduleDao: ScheduleDao) : ViewModel() {
+class ScheduleListViewModel @Inject constructor(private val scheduleDao: ScheduleDao) : ViewModel() {
 
     fun getFullSchedule(): LiveData<List<Schedule>> {
         return scheduleDao.getAllSchedule()
