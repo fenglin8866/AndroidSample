@@ -6,9 +6,9 @@ import androidx.room.Query
 
 @Dao
 interface ScheduleDao {
-    @Query("select * from schedule")
+    @Query("select * from Schedule")
     fun getAllSchedule():LiveData<List<Schedule>>
 
-    @Query("select * from schedule where stop_name=:stopName")
+    @Query("select * from Schedule where stop_name=:stopName")
     fun getScheduleByStopName(stopName: String): LiveData<List<Schedule>>
 }

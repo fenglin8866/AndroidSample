@@ -7,21 +7,22 @@
 
     <fragment
         android:id="@+id/fullScheduleFragment"
-        android:name="com.xxh.learn.composite.busschedule.FullScheduleFragment"
+        android:name="com.xxh.learn.composite.ui.busschedule.FullScheduleFragment"
         android:label="fragment_full_schedule"
         tools:layout="@layout/fragment_full_schedule">
         <action
             android:id="@+id/action_fullScheduleFragment_to_stopScheduleFragment"
             app:destination="@id/stopScheduleFragment">
-            <argument
-                android:name="stopName"
-                app:argType="string" />
         </action>
 
     </fragment>
     <fragment
         android:id="@+id/stopScheduleFragment"
-        android:name="com.xxh.learn.composite.busschedule.StopScheduleFragment"
+        android:name="com.xxh.learn.composite.ui.busschedule.StopScheduleFragment"
         android:label="fragment_stop_schedule"
-        tools:layout="@layout/fragment_stop_schedule" />
+        tools:layout="@layout/fragment_stop_schedule">
+        <argument
+            android:name="stopName"
+            app:argType="string" />
+    </fragment>
 </navigation>

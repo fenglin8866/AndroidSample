@@ -1,4 +1,4 @@
-package com.xxh.learn.composite.busschedule.viewmodels
+package com.xxh.learn.composite.ui.busschedule.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -14,8 +14,11 @@ class ScheduleListViewModel @Inject constructor(private val scheduleDao: Schedul
         return scheduleDao.getAllSchedule()
     }
 
-    fun getStopSchedule(stopName: String): LiveData<List<Schedule>> {
-        return scheduleDao.getScheduleByStopName(stopName)
+    fun getStopSchedule(stopName: String?): LiveData<List<Schedule>>? {
+        if (stopName != null) {
+            return scheduleDao.getScheduleByStopName(stopName)
+        }
+        return null
     }
 
 }
