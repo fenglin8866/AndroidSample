@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_room_composite"
-    app:startDestination="@id/fullScheduleFragment">
+    app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/fullScheduleFragment"
@@ -25,4 +25,28 @@
             android:name="stopName"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.xxh.learn.composite.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_fullScheduleFragment"
+            app:destination="@id/fullScheduleFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_wordListFragment"
+            app:destination="@id/wordListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wordListFragment"
+        android:name="com.xxh.learn.composite.ui.words.WordListFragment"
+        android:label="fragment_word_list"
+        tools:layout="@layout/fragment_word_list" >
+        <action
+            android:id="@+id/action_wordListFragment_to_newWordFragment"
+            app:destination="@id/newWordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newWordFragment"
+        android:name="com.xxh.learn.composite.ui.words.NewWordFragment"
+        android:label="NewWordFragment" />
 </navigation>

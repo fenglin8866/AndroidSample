@@ -1,8 +1,9 @@
 package com.xxh.learn.composite.di
 
 import android.content.Context
-import com.xxh.learn.composite.database.AppDatabase
-import com.xxh.learn.composite.database.schedule.ScheduleDao
+import com.xxh.learn.composite.db.AppDatabase
+import com.xxh.learn.composite.db.ScheduleDao
+import com.xxh.learn.composite.db.WordDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,12 +13,18 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-class ScheduleDaoModule {
+class DaoModule {
 
     @Singleton
     @Provides
     fun provideScheduleDao(db: AppDatabase): ScheduleDao {
         return db.scheduleDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideWordDao(db: AppDatabase): WordDao {
+        return db.wordDao()
     }
 
     @Provides

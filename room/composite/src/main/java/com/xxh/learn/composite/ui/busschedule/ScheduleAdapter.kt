@@ -18,20 +18,29 @@ package com.xxh.learn.composite.ui.busschedule
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.xxh.learn.composite.database.schedule.Schedule
+import com.xxh.learn.composite.vo.Schedule
 import com.xxh.learn.composite.databinding.ScheduleItemBinding
 import com.xxh.learn.composite.ui.busschedule.ScheduleAdapter.ScheduleViewHolder
 import java.text.SimpleDateFormat
 import java.util.Date
 
 class ScheduleAdapter(private val clickCallback: ((Schedule) -> Unit)? = null) :
-    ListAdapter<Schedule, ScheduleViewHolder>(
-        AsyncDifferConfig.Builder(object :
-            DiffUtil.ItemCallback<Schedule>() {
+    ListAdapter<Schedule, ScheduleViewHolder>(SCHEDULE_COMPARATOR) {
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
+        return ScheduleViewHolder.from(parent)
+    }
+
+    override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
+        holder.bind(getItem(position), clickCallback)
+    }
+
+    companion object {
+        private val SCHEDULE_COMPARATOR = object : DiffUtil.ItemCallback<Schedule>() {
             override fun areItemsTheSame(
                 old: Schedule,
                 schedule: Schedule
@@ -46,18 +55,8 @@ class ScheduleAdapter(private val clickCallback: ((Schedule) -> Unit)? = null) :
                 return old.id == schedule.id && old.stopName == schedule.stopName
                         && old.arrivalTime == schedule.arrivalTime
             }
-        }).build()
-    ) {
-
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
-        return ScheduleViewHolder.from(parent)
+        }
     }
-
-    override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
-        holder.bind(getItem(position), clickCallback)
-    }
-
 
     class ScheduleViewHolder(private val binding: ScheduleItemBinding) :
         RecyclerView.ViewHolder(binding.root) {

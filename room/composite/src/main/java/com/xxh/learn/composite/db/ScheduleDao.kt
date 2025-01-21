@@ -1,8 +1,9 @@
-package com.xxh.learn.composite.database.schedule
+package com.xxh.learn.composite.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
+import com.xxh.learn.composite.vo.Schedule
 
 @Dao
 interface ScheduleDao {

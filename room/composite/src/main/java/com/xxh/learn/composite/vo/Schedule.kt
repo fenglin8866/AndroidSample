@@ -1,4 +1,4 @@
-package com.xxh.learn.composite.database.schedule
+package com.xxh.learn.composite.vo
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
