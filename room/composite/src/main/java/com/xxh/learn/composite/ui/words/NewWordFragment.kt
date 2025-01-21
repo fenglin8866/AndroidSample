@@ -4,17 +4,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.navigation.fragment.findNavController
+import com.xxh.basic.BaseFragment
 import com.xxh.learn.composite.R
 import com.xxh.learn.composite.databinding.FragmentNewWordBinding
-import com.xxh.learn.composite.ui.common.BaseFragment
 import com.xxh.learn.composite.vo.Word
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class NewWordFragment : BaseFragment<FragmentNewWordBinding>() {
 
-    private val viewModel: WordViewModel by activityViewModels()
+//    private val viewModel: WordViewModel by activityViewModels()
+
+    private val viewModel: WordViewModel by hiltNavGraphViewModels(R.id.navigation_words)
 
     override fun bindView(inflater: LayoutInflater, container: ViewGroup?): FragmentNewWordBinding {
         return FragmentNewWordBinding.inflate(inflater, container, false)

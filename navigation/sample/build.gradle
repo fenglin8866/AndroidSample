@@ -133,7 +133,7 @@ dependencies {
 
     // Hilt
     implementation libs.hilt.android.core
-    implementation libs.androidx.hilt.navigation.compose
+    implementation libs.hilt.navigation.compose
     kapt libs.hilt.compiler
 
     //kotlin序列号库,需要添加插件kotlin-serialization，jetbrains-kotlin-jvm

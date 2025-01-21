@@ -2,12 +2,13 @@ package com.xxh.learn.composite.ui.busschedule
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
+import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.xxh.learn.composite.ui.busschedule.viewmodels.ScheduleListViewModel
+import com.xxh.basic.BaseFragment
+import com.xxh.learn.composite.R
 import com.xxh.learn.composite.databinding.FragmentFullScheduleBinding
-import com.xxh.learn.composite.ui.common.BaseFragment
+import com.xxh.learn.composite.ui.busschedule.viewmodels.ScheduleListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -15,7 +16,9 @@ class FullScheduleFragment : BaseFragment<FragmentFullScheduleBinding>() {
 
     private lateinit var customAdapter: ScheduleAdapter
 
-    private val model: ScheduleListViewModel by activityViewModels()
+    //private val viewModel: ScheduleListViewModel by activityViewModels()
+
+    private val viewModel: ScheduleListViewModel by hiltNavGraphViewModels(R.id.navigation_schedule)
 
     override fun bindView(
         inflater: LayoutInflater,
@@ -38,7 +41,7 @@ class FullScheduleFragment : BaseFragment<FragmentFullScheduleBinding>() {
     }
 
     private fun updateData() {
-        model.getFullSchedule().observe(viewLifecycleOwner) {
+        viewModel.getFullSchedule().observe(viewLifecycleOwner) {
             customAdapter.submitList(it)
         }
     }

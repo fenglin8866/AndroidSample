@@ -15,26 +15,16 @@
  */
 package com.xxh.learn.composite.ui.words
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
+import androidx.viewbinding.ViewBinding
 import com.xxh.learn.composite.databinding.WordItemBinding
+import com.xxh.learn.composite.ui.common.BaseListAdapter
 import com.xxh.learn.composite.vo.Word
 
 class WordAdapter() :
-    ListAdapter<Word, WordAdapter.ViewHolder>(COMPARATOR) {
-
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
-    }
+    BaseListAdapter<WordItemBinding, Word>(diffCallback = COMPARATOR) {
 
     companion object {
         private val COMPARATOR = object : DiffUtil.ItemCallback<Word>() {
@@ -49,22 +39,13 @@ class WordAdapter() :
         }
     }
 
-    class ViewHolder(private val binding: WordItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    override fun initBindView(inflater: LayoutInflater, container: ViewGroup?): WordItemBinding {
+        return WordItemBinding.inflate(inflater, container, false)
+    }
 
-        @SuppressLint("SimpleDateFormat")
-        fun bind(entity: Word) {
-            binding.apply {
-                textView.text = entity.word
-            }
-        }
-
-        companion object {
-            fun from(parent: ViewGroup): ViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = WordItemBinding.inflate(layoutInflater, parent, false)
-                return ViewHolder(binding)
-            }
+    override fun bindData(binding: ViewBinding, entity: Word) {
+        (binding as WordItemBinding).apply {
+            textView.text = entity.word
         }
     }
 

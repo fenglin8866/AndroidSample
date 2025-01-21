@@ -68,7 +68,7 @@ class ScheduleAdapter(private val clickCallback: ((Schedule) -> Unit)? = null) :
                 arrivalTime.text = SimpleDateFormat("h:mm a").format(
                     Date(entity.arrivalTime.toLong() * 1000)
                 )
-                root.setOnClickListener {
+                itemView.setOnClickListener {
                     clickCallback?.let { callback ->
                         callback(entity)
                     }

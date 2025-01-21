@@ -164,7 +164,9 @@ dependencies {
 
     // Hilt
     implementation libs.hilt.android.core
-    implementation libs.androidx.hilt.navigation.compose
+    implementation libs.hilt.navigation.compose
+    implementation libs.hilt.navigation.fragment
+    /*implementation libs.hilt.lifecycle.viewmodel*/
     kapt libs.hilt.compiler
 
 

@@ -3,17 +3,21 @@ package com.xxh.learn.composite.ui.busschedule
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.xxh.basic.BaseFragment
+import com.xxh.learn.composite.R
 import com.xxh.learn.composite.databinding.FragmentStopScheduleBinding
 import com.xxh.learn.composite.ui.busschedule.viewmodels.ScheduleListViewModel
-import com.xxh.learn.composite.ui.common.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class StopScheduleFragment : BaseFragment<FragmentStopScheduleBinding>() {
 
-    private val viewModel: ScheduleListViewModel by activityViewModels()
+    //private val viewModel: ScheduleListViewModel by activityViewModels()
+    private val viewModel: ScheduleListViewModel by hiltNavGraphViewModels(R.id.navigation_schedule)
+
     private val args:StopScheduleFragmentArgs by navArgs()
 
     override fun bindView(

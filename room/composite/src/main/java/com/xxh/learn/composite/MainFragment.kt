@@ -11,8 +11,8 @@ class MainFragment : ListBaseFragment() {
 
     override fun itemClickHandle(name: String) {
         val id: Int? = when (name) {
-            "schedule" -> R.id.action_mainFragment_to_fullScheduleFragment
-            "words" -> R.id.action_mainFragment_to_wordListFragment
+            "schedule" -> R.id.action_mainFragment_to_navigation_schedule
+            "words" -> R.id.action_mainFragment_to_navigation_words
             else -> null
         }
         id?.let {
