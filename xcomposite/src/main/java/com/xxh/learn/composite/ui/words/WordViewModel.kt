@@ -1,5 +1,6 @@
 package com.xxh.learn.composite.ui.words
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -21,5 +22,11 @@ class WordViewModel @Inject constructor(private val repository: WordRepository) 
         viewModelScope.launch {
             repository.insert(word)
         }
+    }
+
+    //验证绑定作用域是否指定导航图
+    override fun onCleared() {
+        super.onCleared()
+        Log.d("xxh999","onCleared")
     }
 }
