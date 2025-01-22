@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.xxh.learn.composite.vo.Schedule
-import com.xxh.learn.composite.databinding.ScheduleItemBinding
+import com.xxh.learn.composite.databinding.ItemScheduleBinding
 import com.xxh.learn.composite.ui.busschedule.ScheduleAdapter.ScheduleViewHolder
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -58,7 +58,7 @@ class ScheduleAdapter(private val clickCallback: ((Schedule) -> Unit)? = null) :
         }
     }
 
-    class ScheduleViewHolder(private val binding: ScheduleItemBinding) :
+    class ScheduleViewHolder(private val binding: ItemScheduleBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         @SuppressLint("SimpleDateFormat")
@@ -79,7 +79,7 @@ class ScheduleAdapter(private val clickCallback: ((Schedule) -> Unit)? = null) :
         companion object {
             fun from(parent: ViewGroup): ScheduleViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ScheduleItemBinding.inflate(layoutInflater, parent, false)
+                val binding = ItemScheduleBinding.inflate(layoutInflater, parent, false)
                 return ScheduleViewHolder(binding)
             }
         }

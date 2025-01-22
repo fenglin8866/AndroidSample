@@ -19,12 +19,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.viewbinding.ViewBinding
-import com.xxh.learn.composite.databinding.WordItemBinding
+import com.xxh.learn.composite.databinding.ItemWordBinding
 import com.xxh.learn.composite.ui.common.BaseListAdapter
 import com.xxh.learn.composite.vo.Word
 
 class WordAdapter() :
-    BaseListAdapter<WordItemBinding, Word>(diffCallback = COMPARATOR) {
+    BaseListAdapter<ItemWordBinding, Word>(diffCallback = COMPARATOR) {
 
     companion object {
         private val COMPARATOR = object : DiffUtil.ItemCallback<Word>() {
@@ -39,12 +39,12 @@ class WordAdapter() :
         }
     }
 
-    override fun initBindView(inflater: LayoutInflater, container: ViewGroup?): WordItemBinding {
-        return WordItemBinding.inflate(inflater, container, false)
+    override fun initBindView(inflater: LayoutInflater, container: ViewGroup?): ItemWordBinding {
+        return ItemWordBinding.inflate(inflater, container, false)
     }
 
     override fun bindData(binding: ViewBinding, entity: Word) {
-        (binding as WordItemBinding).apply {
+        (binding as ItemWordBinding).apply {
             textView.text = entity.word
         }
     }
