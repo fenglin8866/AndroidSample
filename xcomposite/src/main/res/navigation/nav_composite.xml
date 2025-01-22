@@ -8,15 +8,19 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.xxh.learn.composite.MainFragment"
-        android:label="MainFragment" >
+        android:label="MainFragment">
         <action
             android:id="@+id/action_mainFragment_to_navigation_words"
             app:destination="@id/navigation_words" />
         <action
             android:id="@+id/action_mainFragment_to_navigation_schedule"
             app:destination="@id/navigation_schedule" />
+        <action
+            android:id="@+id/action_mainFragment_to_navigation_inventory"
+            app:destination="@id/navigation_inventory" />
     </fragment>
-    <navigation android:id="@+id/navigation_words"
+    <navigation
+        android:id="@+id/navigation_words"
         app:startDestination="@id/wordListFragment">
         <fragment
             android:id="@+id/wordListFragment"
@@ -33,7 +37,8 @@
             android:label="NewWordFragment"
             tools:layout="@layout/fragment_new_word" />
     </navigation>
-    <navigation android:id="@+id/navigation_schedule"
+    <navigation
+        android:id="@+id/navigation_schedule"
         app:startDestination="@id/fullScheduleFragment">
         <fragment
             android:id="@+id/fullScheduleFragment"
@@ -42,7 +47,7 @@
             tools:layout="@layout/fragment_full_schedule">
             <action
                 android:id="@+id/action_fullScheduleFragment_to_stopScheduleFragment"
-                app:destination="@id/stopScheduleFragment"></action>
+                app:destination="@id/stopScheduleFragment" />
 
         </fragment>
         <fragment
@@ -54,5 +59,35 @@
                 android:name="stopName"
                 app:argType="string" />
         </fragment>
+    </navigation>
+    <navigation
+        android:id="@+id/navigation_inventory"
+        app:startDestination="@id/itemListFragment">
+        <fragment
+            android:id="@+id/itemDetailFragment"
+            android:name="com.xxh.learn.composite.ui.inventory.ItemDetailFragment"
+            android:label="fragment_item_detail"
+            tools:layout="@layout/fragment_item_detail">
+            <argument
+                android:name="item_id"
+                app:argType="integer" />
+        </fragment>
+        <fragment
+            android:id="@+id/itemListFragment"
+            android:name="com.xxh.learn.composite.ui.inventory.ItemListFragment"
+            android:label="fragment_item_list"
+            tools:layout="@layout/fragment_item_list">
+            <action
+                android:id="@+id/action_itemListFragment_to_itemDetailFragment"
+                app:destination="@id/itemDetailFragment" />
+            <action
+                android:id="@+id/action_itemListFragment_to_itemAddFragment"
+                app:destination="@id/itemAddFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/itemAddFragment"
+            android:name="com.xxh.learn.composite.ui.inventory.ItemAddFragment"
+            android:label="ItemAddFragment"
+            tools:layout="@layout/fragment_add_item" />
     </navigation>
 </navigation>

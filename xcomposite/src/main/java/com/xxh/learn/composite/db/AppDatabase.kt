@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.xxh.learn.composite.vo.Item
 import com.xxh.learn.composite.vo.Schedule
 import com.xxh.learn.composite.vo.Word
 import kotlinx.coroutines.CoroutineScope
@@ -12,12 +13,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
-@Database(entities = [Schedule::class, Word::class], version = 1)
+@Database(entities = [Schedule::class, Word::class, Item::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun scheduleDao(): ScheduleDao
 
     abstract fun wordDao(): WordDao
+
+    abstract fun itemDao(): ItemDao
 
     companion object {
 
@@ -32,7 +35,7 @@ abstract class AppDatabase : RoomDatabase() {
                 ).createFromAsset("database/bus_schedule.db")
                     // Wipes and rebuilds instead of migrating if no Migration object.
                     // Migration is not part of this codelab.
-                    .fallbackToDestructiveMigration()
+                  //  .fallbackToDestructiveMigration()
                     .addCallback(WordDatabaseCallback())
                     .build()
                 INSTANCE = instance

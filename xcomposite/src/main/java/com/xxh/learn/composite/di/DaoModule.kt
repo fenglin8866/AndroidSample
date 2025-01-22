@@ -2,6 +2,7 @@ package com.xxh.learn.composite.di
 
 import android.content.Context
 import com.xxh.learn.composite.db.AppDatabase
+import com.xxh.learn.composite.db.ItemDao
 import com.xxh.learn.composite.db.ScheduleDao
 import com.xxh.learn.composite.db.WordDao
 import dagger.Module
@@ -25,6 +26,12 @@ class DaoModule {
     @Provides
     fun provideWordDao(db: AppDatabase): WordDao {
         return db.wordDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideItemDao(db: AppDatabase): ItemDao {
+        return db.itemDao()
     }
 
     @Provides
