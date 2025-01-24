@@ -23,6 +23,7 @@ import java.util.concurrent.TimeUnit
 
 /**
  * Utility class that decides whether we should fetch some data or not.
+ * Utility 类，它决定我们是否应该获取一些数据。
  */
 class RateLimiter<in KEY>(timeout: Int, timeUnit: TimeUnit) {
     private val timestamps = ArrayMap<KEY, Long>()

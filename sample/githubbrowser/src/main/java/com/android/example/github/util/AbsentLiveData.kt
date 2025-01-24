@@ -20,10 +20,12 @@ import androidx.lifecycle.LiveData
 
 /**
  * A LiveData class that has `null` value.
+ * 具有 'null' 值的 LiveData 类。
  */
 class AbsentLiveData<T : Any?> private constructor(): LiveData<T>() {
     init {
         // use post instead of set since this can be created on any thread
+        //使用 post 而不是 set，因为这可以在任何线程上创建
         postValue(null)
     }
 

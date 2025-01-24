@@ -23,7 +23,7 @@ object GithubTypeConverters {
     @TypeConverter
     @JvmStatic
     fun stringToIntList(data: String?): List<Int>? {
-        return data?.let {
+        return data?.let { it ->
             it.split(",").map {
                 try {
                     it.toInt()
