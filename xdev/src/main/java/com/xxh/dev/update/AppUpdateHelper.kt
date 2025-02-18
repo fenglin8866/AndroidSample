@@ -8,6 +8,7 @@ import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.appupdate.AppUpdateOptions
@@ -31,12 +32,11 @@ import com.xxh.dev.lifecyclelib.lifecycle.LifecycleOwner
  *
  */
 class AppUpdateHelper(
-    private val activity: AppCompatActivity
+    private val activity: AppCompatActivity,
+    private val strategy: UpdateStrategy
 ) : DefaultLifecycleObserver, InstallStateUpdatedListener {
 
     private var appUpdateManager: AppUpdateManager? = null
-
-    private val DAYS_FOR_FLEXIBLE_UPDATE = 11
 
     private val activityResultLauncher: ActivityResultLauncher<IntentSenderRequest> =
         activity.registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result: ActivityResult ->
@@ -64,6 +64,10 @@ class AppUpdateHelper(
                 popupSnackbarForCompleteUpdate()
             }
 
+            else -> {
+
+            }
+
         }
     }
 
@@ -87,69 +91,141 @@ class AppUpdateHelper(
         super.onCreate(owner)
         appUpdateManager = AppUpdateManagerFactory.create(activity)
         appUpdateManager?.registerListener(this)
+        if (strategy.isCheckUpdate()) {
+            checkUpdate()
+        }
     }
 
-    fun checkUpdate() {
-        // Returns an intent object that you use to check for an update.
-        val appUpdateInfoTask = appUpdateManager?.appUpdateInfo
+    /**
+     *
+     */
+    fun checkUpdate(showUpdate: Boolean = false) {
+        if (strategy.isNeedUpdate()) {
+            // Returns an intent object that you use to check for an update.
+            val appUpdateInfoTask = appUpdateManager?.appUpdateInfo
 
-        // Checks whether the platform allows the specified type of update,
-        // and current version staleness.
-        appUpdateInfoTask?.addOnSuccessListener { appUpdateInfo ->
-            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE /* 有可用更新 */
-                && (appUpdateInfo.clientVersionStalenessDays() ?: -1) >= DAYS_FOR_FLEXIBLE_UPDATE /* 设置几天后更新 */
-                && appUpdateInfo.updatePriority() >= 4 /* 优先级等于高于4更新 */
-                && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE) /* 是否允许灵活更新 */
-             //   && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE) /* 是否允许立即更新 */
-            ) {
-                // Request the update.
-                appUpdateManager?.startUpdateFlowForResult(
-                    // Pass the intent that is returned by 'getAppUpdateInfo()'.
-                    appUpdateInfo,
-                    // an activity result launcher registered via registerForActivityResult
-                    activityResultLauncher,
-                    // Or pass 'AppUpdateType.FLEXIBLE' to newBuilder() for
-                    // flexible updates.
-                    AppUpdateOptions.newBuilder(AppUpdateType.FLEXIBLE).build()
-                )
+            // Checks whether the platform allows the specified type of update,
+            // and current version staleness.
+            appUpdateInfoTask?.addOnSuccessListener { appUpdateInfo ->
+                if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE /* 有可用更新 */
+                    && appUpdateInfo.updatePriority() >= strategy.getUpdatePriority() /* 优先级等于高于4更新 */
+                ) {
+                    when (strategy.getUpdateType(appUpdateInfo.clientVersionStalenessDays())) {
+                        UpdateType.FLEXIBLE -> {
+                            if (strategy.showUpdateOfHome(appUpdateInfo.availableVersionCode()) || showUpdate) {
+                                requestFlexibleUpdate(appUpdateInfo)
+                            }
+                        }
+
+                        UpdateType.IMMEDIATE -> {
+                            requestImmediateUpdate(appUpdateInfo)
+                        }
+
+                        else -> {
+
+                        }
+                    }
+                }
             }
         }
     }
 
+    fun checkUpdate2() {
+        if (strategy.isNeedUpdate()) {
+            // Returns an intent object that you use to check for an update.
+            val appUpdateInfoTask = appUpdateManager?.appUpdateInfo
+
+            // Checks whether the platform allows the specified type of update,
+            // and current version staleness.
+            appUpdateInfoTask?.addOnSuccessListener { appUpdateInfo ->
+                if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE /* 有可用更新 */
+                    && appUpdateInfo.updatePriority() >= strategy.getUpdatePriority() /* 优先级等于高于4更新 */
+                ) {
+                    when (strategy.getUpdateType(appUpdateInfo.clientVersionStalenessDays())) {
+                        UpdateType.FLEXIBLE -> {
+                            requestFlexibleUpdate(appUpdateInfo)
+                        }
+
+                        UpdateType.IMMEDIATE -> {
+                            requestImmediateUpdate(appUpdateInfo)
+                        }
+
+                        else -> {
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun requestFlexibleUpdate(appUpdateInfo: AppUpdateInfo){
+        // Request the update.
+        appUpdateManager?.startUpdateFlowForResult(
+            // Pass the intent that is returned by 'getAppUpdateInfo()'.
+            appUpdateInfo,
+            // an activity result launcher registered via registerForActivityResult
+            activityResultLauncher,
+            // Or pass 'AppUpdateType.FLEXIBLE' to newBuilder() for
+            // flexible updates.
+            AppUpdateOptions.newBuilder(AppUpdateType.FLEXIBLE).build()
+        )
+    }
+
+    private fun requestImmediateUpdate(appUpdateInfo: AppUpdateInfo){
+        // Request the update.
+        appUpdateManager?.startUpdateFlowForResult(
+            // Pass the intent that is returned by 'getAppUpdateInfo()'.
+            appUpdateInfo,
+            // an activity result launcher registered via registerForActivityResult
+            activityResultLauncher,
+            // Or pass 'AppUpdateType.FLEXIBLE' to newBuilder() for
+            // flexible updates.
+            AppUpdateOptions.newBuilder(AppUpdateType.IMMEDIATE).build()
+        )
+    }
+
     override fun onResume(owner: LifecycleOwner) {
         super.onResume(owner)
-        appUpdateManager?.appUpdateInfo?.addOnSuccessListener { appUpdateInfo ->
-            /**
-             * 已经监听下载完成时更新，为什么在onResume中再检测？
-             * 防止用户在多activity切换，导致监听注销。进而使下载完成后无法安装。
-             * 次处是对这种场景的补充处理。
-             */
-            // If the update is downloaded but not installed,
-            // notify the user to complete the update.
-            if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
-                popupSnackbarForCompleteUpdate()
+
+        if (strategy.isCheckInstall()) {
+            appUpdateManager?.appUpdateInfo?.addOnSuccessListener { appUpdateInfo ->
+                /**
+                 * 已经监听下载完成时更新，为什么在onResume中再检测？
+                 * 防止用户在多activity切换，导致监听注销。进而使下载完成后无法安装。
+                 * 该处是对这种场景的补充处理。
+                 */
+                // If the update is downloaded but not installed,
+                // notify the user to complete the update.
+                if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
+                    popupSnackbarForCompleteUpdate()
+                }
             }
+        }
 
-            /**
-             * 防止用户按back键退出立即更新
-             */
-            if (appUpdateInfo.updateAvailability()
-                == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS
-            ) {
-                // If an in-app update is already running, resume the update.
-                appUpdateManager?.startUpdateFlowForResult(
-                    appUpdateInfo,
-                    activityResultLauncher,
-                    AppUpdateOptions.newBuilder(AppUpdateType.IMMEDIATE).build()
-                )
+        if (strategy.isKeepImmediateUpdate()) {
+            appUpdateManager?.appUpdateInfo?.addOnSuccessListener { appUpdateInfo ->
+                /**
+                 * 防止用户按back键退出立即更新
+                 */
+                if (appUpdateInfo.updateAvailability()
+                    == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS
+                ) {
+                    // If an in-app update is already running, resume the update.
+                    appUpdateManager?.startUpdateFlowForResult(
+                        appUpdateInfo,
+                        activityResultLauncher,
+                        AppUpdateOptions.newBuilder(AppUpdateType.IMMEDIATE).build()
+                    )
 
-               /* //如果不需要监听回调，可以使用这种方式
-                appUpdateManager?.startUpdateFlowForResult(
-                    appUpdateInfo,
-                    activity,
-                    AppUpdateOptions.newBuilder(AppUpdateType.IMMEDIATE).build(),1000)*/
+                    /* //如果不需要监听回调，可以使用这种方式
+                     appUpdateManager?.startUpdateFlowForResult(
+                         appUpdateInfo,
+                         activity,
+                         AppUpdateOptions.newBuilder(AppUpdateType.IMMEDIATE).build(),1000)*/
+                }
+
             }
-
         }
 
     }
@@ -159,13 +235,13 @@ class AppUpdateHelper(
         appUpdateManager?.unregisterListener(this)
     }
 
-
     companion object {
 
         /**
          * 有升级时,添加提示信息.例如小红点,标签等等
          * 检查更新是异步的，使用回调处理
          */
+        //todo 该检查更新未与配置未关联，待修复
         fun hasNewVersion(context: Context, callback: (Boolean) -> Unit) {
             try {
                 val appUpdateManager = AppUpdateManagerFactory.create(context)
@@ -178,6 +254,5 @@ class AppUpdateHelper(
             }
         }
     }
-
 
 }
