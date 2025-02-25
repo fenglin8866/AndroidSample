@@ -130,35 +130,6 @@ class AppUpdateHelper(
         }
     }
 
-    fun checkUpdate2() {
-        if (strategy.isNeedUpdate()) {
-            // Returns an intent object that you use to check for an update.
-            val appUpdateInfoTask = appUpdateManager?.appUpdateInfo
-
-            // Checks whether the platform allows the specified type of update,
-            // and current version staleness.
-            appUpdateInfoTask?.addOnSuccessListener { appUpdateInfo ->
-                if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE /* 有可用更新 */
-                    && appUpdateInfo.updatePriority() >= strategy.getUpdatePriority() /* 优先级等于高于4更新 */
-                ) {
-                    when (strategy.getUpdateType(appUpdateInfo.clientVersionStalenessDays())) {
-                        UpdateType.FLEXIBLE -> {
-                            requestFlexibleUpdate(appUpdateInfo)
-                        }
-
-                        UpdateType.IMMEDIATE -> {
-                            requestImmediateUpdate(appUpdateInfo)
-                        }
-
-                        else -> {
-
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     private fun requestFlexibleUpdate(appUpdateInfo: AppUpdateInfo){
         // Request the update.
         appUpdateManager?.startUpdateFlowForResult(
