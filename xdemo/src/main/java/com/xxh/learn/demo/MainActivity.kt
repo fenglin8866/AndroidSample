@@ -3,21 +3,13 @@ package com.xxh.learn.demo
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
-import android.webkit.WebResourceError
-import android.webkit.WebResourceRequest
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.android.material.snackbar.Snackbar
-import com.xxh.learn.demo.component.TestBasicViewsActivity
 import com.xxh.learn.demo.databinding.ActivityMainBinding
-import com.xxh.learn.demo.utils.Utils
+import com.xxh.learn.demo.net.NetActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -49,14 +41,19 @@ class MainActivity : AppCompatActivity() {
     private fun setUpView() {
         mBinding.apply {
             button.setOnClickListener {
-                startActivity(Intent(this@MainActivity,WebViewActivity::class.java))
+               // startActivity(Intent(this@MainActivity,WebViewActivity::class.java))
                 //textView.text = viewModel.getApplication()
                 /*val url = "https://developers.android.com"
                 val intent = CustomTabsIntent.Builder().build()
                 intent.launchUrl(this@MainActivity, Uri.parse(url))*/
                 //Log.i("xxh00", Utils.getDeviceId())
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.setData(Uri.parse("https://developers.android.com"))
+               // intent.setPackage("com.android.browser") // 需要手动指定浏览器
+                startActivity(intent)
             }
             button2.setOnClickListener {
+                startActivity(Intent(this@MainActivity,NetActivity::class.java))
                 //textView2.text = viewModel.getSavedTest()
               //  editTextText.setText(savedTestDataManager.getTextData())
                // Log.i("xxh00", Utils.getDeviceId())
