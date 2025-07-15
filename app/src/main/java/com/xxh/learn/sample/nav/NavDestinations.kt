@@ -1,4 +1,4 @@
-package com.xxh.learn.sample
+package com.xxh.learn.sample.nav
 
 import kotlinx.serialization.Serializable
 

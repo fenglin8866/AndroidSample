@@ -3,6 +3,7 @@ package com.xxh.learn.sample
 import androidx.navigation.fragment.findNavController
 
 import com.xxh.basic.ListBaseFragment
+import com.xxh.learn.sample.nav.NavDestinations
 
 
 class MainListFragment : ListBaseFragment() {
